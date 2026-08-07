@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: find-and-replace https://YOURDOMAIN.com with the live domain at deploy -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://YOURDOMAIN.com/</loc>
+  </url>
+  <url>
+    <loc>https://YOURDOMAIN.com/weddings.html</loc>
+  </url>
+  <url>
+    <loc>https://YOURDOMAIN.com/brands.html</loc>
+  </url>
+  <url>
+    <loc>https://YOURDOMAIN.com/the-booth.html</loc>
+  </url>
+  <url>
+    <loc>https://YOURDOMAIN.com/add-ons.html</loc>
+  </url>
+  <url>
+    <loc>https://YOURDOMAIN.com/faq.html</loc>
+  </url>
+  <url>
+    <loc>https://YOURDOMAIN.com/contact.html</loc>
+  </url>
+</urlset>

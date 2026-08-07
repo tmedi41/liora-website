@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Availability | Liora Photo Co. Houston</title>
+<meta name="description" content="Check availability for Liora Photo Co.'s luxury photo booth in Houston, TX. Tell us your event date and we'll reply within 24 hours. No hidden fees, ever.">
+<meta property="og:title" content="Check Availability | Liora Photo Co. Houston">
+<meta property="og:description" content="Check availability for Liora Photo Co.'s luxury photo booth in Houston, TX. Tell us your event date and we'll reply within 24 hours. No hidden fees, ever.">
+<meta property="og:type" content="website">
+<!-- TODO: replace https://YOURDOMAIN.com with the live domain at deploy -->
+<meta property="og:image" content="https://YOURDOMAIN.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html" aria-label="Liora Photo Co. home">
+    <img src="assets/liora-logo.png" alt="Liora Photo Co. logo">
+  </a>
+  <div class="nav-links">
+    <a href="weddings.html">Weddings + Parties</a>
+    <a href="brands.html">Brands + Events</a>
+    <a href="the-booth.html">The Booth</a>
+    <a href="add-ons.html">Enhancements</a>
+    <a href="faq.html">FAQ</a>
+    <a class="btn" href="contact.html" aria-current="page">Check availability</a>
+  </div>
+</nav>
+
+<header class="split-hero">
+  <div class="split-hero-content">
+    <p class="eyebrow">Contact Our Houston Photo Booth Team</p>
+    <h1>Let's talk about your date.</h1>
+    <p>Tell us a little about your event and we'll confirm availability within 24 hours.</p>
+  </div>
+  <!-- Replace this div with <img src="..." alt="Liora on location" class="split-hero-visual"> when photography is ready -->
+  <div class="split-hero-visual" aria-hidden="true">
+    <svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>
+    <span>Liora on location, photo coming soon</span>
+  </div>
+</header>
+
+<section>
+  <div class="form-wrap">
+    <!-- Replace YOUR_FORM_ID with your Formspree form ID: https://formspree.io -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="field">
+          <label for="event_date">Event date</label>
+          <input type="date" id="event_date" name="event_date">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="event_type">Event type</label>
+          <select id="event_type" name="event_type">
+            <option value="Wedding">Wedding</option>
+            <option value="Brand / Corporate">Brand / Corporate</option>
+            <option value="Private Celebration">Private Celebration</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="venue">Venue / location</label>
+          <input type="text" id="venue" name="venue">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="message">Tell us about your event</label>
+        <textarea id="message" name="message" placeholder="Guest count, timing, and anything else we should know"></textarea>
+      </div>
+
+      <p class="form-note">We'll never share your information. Expect a reply within 24 hours.</p>
+
+      <button class="btn" type="submit">Send inquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Liora Photo Co. LLC · Houston, TX</span>
+  <span><a href="index.html#liora-promise">The Liora Promise</a></span>
+  <span><a href="#">Instagram</a> &nbsp;·&nbsp; <a href="mailto:hello@liorabooth.com">hello@liorabooth.com</a></span>
+</footer>
+
+</body>
+</html>
