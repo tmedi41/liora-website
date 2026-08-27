@@ -12,9 +12,10 @@
 <meta property="og:image" content="https://YOURDOMAIN.com/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Prata&family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Playfair+Display:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<!-- SEO: LocalBusiness structured data — replace telephone and url with live values at deploy -->
+<!-- SEO: LocalBusiness structured data — replace url with the live domain at deploy -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -22,7 +23,6 @@
   "name": "Liora Photo Co.",
   "description": "Luxury photo booth rental for weddings, quinceañeras, parties, and corporate events in the greater Houston area.",
   "image": "https://YOURDOMAIN.com/assets/og-image.png",
-  "telephone": "+1-XXX-XXX-XXXX",
   "url": "https://YOURDOMAIN.com",
   "areaServed": [
     { "@type": "City", "name": "Houston, TX" },
@@ -39,235 +39,305 @@
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="index.html" aria-label="Liora Photo Co. home">
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Liora Photo Co. home">
     <img src="assets/liora-logo.png" alt="Liora Photo Co. logo">
   </a>
-  <div class="nav-links">
-    <a href="weddings.html">Weddings + Parties</a>
-    <a href="brands.html">Brands + Events</a>
-    <a href="the-booth.html">The Booth</a>
-    <a href="add-ons.html">Enhancements</a>
+  <nav class="main-nav">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="enhancements.html">Enhancements</a>
     <a href="faq.html">FAQ</a>
-    <a class="btn" href="contact.html">Check availability</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn-primary" href="contact.html">Check your date</a>
+</header>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-badge"><span class="line"></span>Houston, Texas</p>
+      <h1>Wow your guests with prints they'll <em class="accent on-dark">keep forever.</em></h1>
+      <p class="lede">Studio photos. A real host on site. One all-in price. We arrive early and stay until the last print is in someone's hand.</p>
+      <div class="hero-ctas">
+        <a class="btn-pill on-dark" href="contact.html">Check your date</a>
+        <a class="btn-pill-outline on-dark" href="#booth">See the booth</a>
+      </div>
+      <div class="hero-trust">
+        <span>✦ Replies within 24 hours</span>
+        <span>✦ No travel or idle fees</span>
+        <span>✦ Gallery next morning</span>
+      </div>
+    </div>
+    <!-- Replace .hero-photo with a real photo when photography is ready -->
+    <div class="hero-visual">
+      <div class="hero-photo" aria-hidden="true">
+        <span>Hero photo — guests mid-laugh at<br>the oak booth, host in frame</span>
+      </div>
+      <div class="hero-strip" aria-hidden="true">
+        <span>2×6 print strip</span>
+      </div>
+    </div>
   </div>
-</nav>
-
-<header class="hero">
-  <img class="hero-logo" src="assets/liora-logo.png" alt="Liora Photo Co. logo">
-  <h1 class="hero-tag serif">A photo experience your guests will frame.</h1>
-  <p class="hero-loc eyebrow">Luxury Photo Booth &nbsp;·&nbsp; Houston, Texas</p>
-
-  <div class="hero-fork">
-    <a class="fork-card" href="weddings.html">
-      <h3 class="serif">Celebrating something?</h3>
-      <p class="fork-sub">Weddings, birthdays, quinceañeras, and every party in between.</p>
-      <span class="fork-arrow">Explore weddings + parties &rarr;</span>
-    </a>
-    <a class="fork-card" href="brands.html">
-      <h3 class="serif">Building a brand moment?</h3>
-      <p class="fork-sub">Launches, galas, conferences, and activations.</p>
-      <span class="fork-arrow">Explore brands &rarr;</span>
-    </a>
+  <div class="hero-ticker-wrap" aria-hidden="true">
+    <div class="hero-ticker">
+      <span>Weddings ✦ Galas ✦ Brand activations ✦ Anniversaries ✦ Corporate events ✦ Holiday parties ✦ Weddings ✦ Galas ✦ Brand activations ✦ Anniversaries ✦ Corporate events ✦ Holiday parties ✦ </span>
+      <span>Weddings ✦ Galas ✦ Brand activations ✦ Anniversaries ✦ Corporate events ✦ Holiday parties ✦ Weddings ✦ Galas ✦ Brand activations ✦ Anniversaries ✦ Corporate events ✦ Holiday parties ✦ </span>
+    </div>
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">HOUSTON, TEXAS &#10022; LUXURY PHOTO EXPERIENCES &#10022; WEDDINGS &#10022; BRANDS + EVENTS &#10022;</span>
-    <span class="marquee-item">HOUSTON, TEXAS &#10022; LUXURY PHOTO EXPERIENCES &#10022; WEDDINGS &#10022; BRANDS + EVENTS &#10022;</span>
+<section class="section" id="promise">
+  <div class="section-head">
+    <p class="kicker">The Liora Promise</p>
+    <h2 class="display">What you can count on,<br>every time</h2>
   </div>
-</div>
-
-<div class="divider" aria-hidden="true">
-  <svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>
-</div>
-
-<section class="booth" id="booth">
-  <div class="booth-visual" aria-hidden="true">
-    <span>Your oak booth photo here</span>
-  </div>
-  <div class="booth-copy">
-    <p class="eyebrow">The Booth</p>
-    <h2>Handcrafted oak. Designed to belong at your event.</h2>
-    <p>Most photo booths look like equipment. Ours is a double-sided, custom-built oak piece that fits the room like furniture, whether at a wedding, a gala, or a brand launch.</p>
-    <ul class="booth-points">
-      <li><svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>Studio-quality DSLR photography with professional lighting</li>
-      <li><svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>Prints in seconds on premium lab-grade paper</li>
-      <li><svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>Instant sharing by text, email, or AirDrop</li>
-      <li><svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>A polished attendant with every booking</li>
-    </ul>
-    <a class="btn btn-ghost" href="the-booth.html">See the full booth</a>
+  <div class="promise-grid">
+    <div class="promise-card">
+      <span class="promise-num">01</span>
+      <h3>One price.<br>No surprises.</h3>
+      <p>Travel, setup, teardown, idle hours, and your gallery are included. The proposal number is the invoice number.</p>
+    </div>
+    <div class="promise-card">
+      <span class="promise-num">02</span>
+      <h3>A host, not a<br>booth-sitter.</h3>
+      <p>A trained, bilingual host styles poses, hands out prints, and keeps the line moving. You will know their name before the event.</p>
+    </div>
+    <div class="promise-card">
+      <span class="promise-num">03</span>
+      <h3>Early, tested,<br>twice.</h3>
+      <p>We load in 90 minutes ahead and test print before your first guest. Backup camera, printer, and laptop ride along every time.</p>
+    </div>
   </div>
 </section>
 
-<section class="strips-wrap" id="gallery">
+<section class="rail-section" id="booth">
   <div class="section-head">
-    <p class="eyebrow">Gallery</p>
-    <h2>Every event leaves with keepsakes</h2>
+    <p class="kicker on-dark">The booth in action</p>
+    <h2 class="display">Studio quality,<br>real moments</h2>
+    <p class="lede on-dark">Handcrafted double-sided oak, built to sit beside your florals instead of competing with them.</p>
   </div>
-  <div class="strips">
-    <div class="strip">
-      <div class="frame" aria-hidden="true"></div><div class="frame" aria-hidden="true"></div><div class="frame" aria-hidden="true"></div>
-      <p class="strip-label">Liora ✦</p>
+  <!-- Replace each .rail-visual with a real photo when photography is ready -->
+  <div class="rail" id="boothRail">
+    <figure class="rail-slide">
+      <div class="rail-visual" aria-hidden="true"><span>Wide hero shot. Booth in a styled ballroom,<br>guests queuing, host mid-gesture</span></div>
+    </figure>
+    <figure class="rail-slide">
+      <div class="rail-visual" aria-hidden="true"><span>Close-up. Hands holding<br>a warm print</span></div>
+      <figcaption class="rail-caption">Prints in eight seconds, on lab-grade paper.</figcaption>
+    </figure>
+    <figure class="rail-slide">
+      <div class="rail-visual" aria-hidden="true"><span>Three generations<br>squeezed into frame</span></div>
+      <figcaption class="rail-caption">The best frame of the night is never the first one.</figcaption>
+    </figure>
+    <figure class="rail-slide">
+      <div class="rail-visual" aria-hidden="true"><span>Guest at the audio<br>guestbook handset</span></div>
+      <figcaption class="rail-caption">Voices you replay on your anniversary.</figcaption>
+    </figure>
+  </div>
+  <div class="rail-nav">
+    <button type="button" class="rail-btn" data-rail-prev aria-label="Previous photo">&larr;</button>
+    <button type="button" class="rail-btn" data-rail-next aria-label="Next photo">&rarr;</button>
+  </div>
+</section>
+
+<section class="section" id="how-to-book">
+  <div class="section-head">
+    <p class="kicker">How to book</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step">
+      <span class="step-num">1</span>
+      <span class="step-tag">Day one</span>
+      <h3>Tell us the date</h3>
+      <p>Six short fields. A real reply within 24 hours, with availability and one all-in price.</p>
     </div>
-    <div class="strip">
-      <div class="frame bw" aria-hidden="true"></div><div class="frame bw" aria-hidden="true"></div><div class="frame bw" aria-hidden="true"></div>
-      <p class="strip-label">Liora ✦</p>
+    <div class="step">
+      <span class="step-num">2</span>
+      <span class="step-tag">Same day</span>
+      <h3>Sign and save it</h3>
+      <p>A plain-English agreement and a 30% retainer, both online. Then we design your template and backdrop.</p>
     </div>
-    <div class="strip">
-      <div class="frame" aria-hidden="true"></div><div class="frame" aria-hidden="true"></div><div class="frame" aria-hidden="true"></div>
-      <p class="strip-label">Liora ✦</p>
+    <div class="step">
+      <span class="step-num">3</span>
+      <span class="step-tag">Event night</span>
+      <h3>We handle the rest</h3>
+      <p>We arrive 90 minutes early, coordinate with your planner, run the booth.</p>
     </div>
-    <div class="strip">
-      <div class="frame bw" aria-hidden="true"></div><div class="frame bw" aria-hidden="true"></div><div class="frame bw" aria-hidden="true"></div>
-      <p class="strip-label">Liora ✦</p>
+  </div>
+  <div class="cta-row">
+    <a class="btn-primary" href="contact.html">Start step one</a>
+  </div>
+</section>
+
+<section class="section card-bg" id="experiences">
+  <div class="section-head">
+    <p class="kicker">Experiences</p>
+    <h2 class="display">Three ways to Liora</h2>
+    <p class="lede">One all-inclusive proposal. Never an à la carte maze.</p>
+  </div>
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <span class="pkg-tag">Digital only</span>
+      <h3>The Classic</h3>
+      <div class="pkg-list">
+        <span>3 hours of service</span>
+        <span>Studio DSLR photos and lighting</span>
+        <span>Custom print template</span>
+        <span>Unlimited sessions</span>
+        <span>Instant sharing</span>
+        <span>On-site host</span>
+        <span>Gallery in 24 hours</span>
+      </div>
+      <a class="btn-primary" href="contact.html">Inquire</a>
+    </div>
+    <div class="pkg-card featured">
+      <div class="pkg-tag-row">
+        <span class="pkg-tag">Digital + print</span>
+        <span class="pkg-badge">Most booked</span>
+      </div>
+      <h3>The Signature</h3>
+      <div class="pkg-list">
+        <span>Everything in The Classic, plus:</span>
+        <span>Unlimited prints, 2×6 or 4×6</span>
+        <span>Glam B&amp;W mode</span>
+        <span>Multiple template designs</span>
+      </div>
+      <a class="btn-primary" href="contact.html">Inquire</a>
+    </div>
+    <div class="pkg-card">
+      <span class="pkg-tag">Full service</span>
+      <h3>The Grande</h3>
+      <div class="pkg-list">
+        <span>5 hours of service</span>
+        <span>Everything in The Signature, plus:</span>
+        <span>Audio guestbook included</span>
+        <span>Guest book album</span>
+        <span>Curated props</span>
+      </div>
+      <a class="btn-primary" href="contact.html">Inquire</a>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:2.2rem; font-size:0.94rem;">Want more? <a href="enhancements.html" style="color:var(--gold); border-bottom:1px solid rgba(138,111,69,0.4);">Browse the enhancements</a></p>
+</section>
+
+<section class="section" id="coverage">
+  <div class="section-head">
+    <p class="kicker">Coverage</p>
+    <h2 class="display">Houston metro, and a<br>good way past it.</h2>
+  </div>
+  <div class="coverage-grid">
+    <div class="coverage-card">
+      <span class="tag">Travel included</span>
+      <p>Houston, Katy, Sugar Land, Pearland, Cypress, Spring, The Woodlands, Fulshear, Sienna</p>
+    </div>
+    <div class="coverage-card">
+      <span class="tag muted">Also available</span>
+      <p>Galveston, Brenham, Conroe, Richmond, League City, Baytown</p>
     </div>
   </div>
 </section>
 
 <!--
-  CLIENT REVIEWS MARQUEE — disabled until real reviews exist.
-  This section is hidden via the `hidden` attribute below and contains no
-  invented testimonials or names. To activate once real client reviews
-  are available:
-    1. Remove the `hidden` attribute from the <section class="reviews-marquee"> tag.
-    2. Replace the placeholder comment inside .marquee-track with real
-       .review-slide entries, e.g.:
-         <div class="review-slide">"Quote from the client."<span class="attribution">Client Name, Wedding — Houston</span></div>
-       Include at least 2-3 slides (duplicate the full set once in the
-       track, same pattern as the marquee above) so the scroll loops
-       seamlessly via the translateX(-50%) animation.
-    3. Adjust the animation duration on .marquee-track in styles.css if
-       the total content width changes significantly.
+  CLIENT REVIEWS — placeholder cards until real testimonials exist.
+  Replace the two .review-card blocks below with real quotes once you
+  have them, e.g.:
+    <blockquote class="review-card">
+      <p style="font-family:var(--font-display); font-size:1.4rem; text-transform:none; letter-spacing:0; color:var(--green);">"Real client quote."</p>
+      <footer>Client Name, Event — Houston</footer>
+    </blockquote>
 -->
-<section class="reviews-marquee" hidden>
+<section class="section card-bg" id="reviews">
   <div class="section-head">
-    <p class="eyebrow">Client Reviews</p>
-    <h2>What it's like to book Liora</h2>
+    <p class="kicker">In their words</p>
+    <h2 class="display">The reviews all use the<br>same word. <em class="accent">Easy.</em></h2>
   </div>
-  <div class="marquee">
-    <div class="marquee-track">
-      <!-- <div class="review-slide">"Quote here."<span class="attribution">Name, Event</span></div> -->
-    </div>
+  <div class="reviews-grid">
+    <blockquote class="review-card">
+      <p>Client review coming soon<br>— check back after our next event</p>
+      <footer>Real quotes replace this placeholder</footer>
+    </blockquote>
+    <blockquote class="review-card">
+      <p>Client review coming soon<br>— check back after our next event</p>
+      <footer>Real quotes replace this placeholder</footer>
+    </blockquote>
   </div>
 </section>
 
-<section id="experiences">
+<section class="section" id="faq">
   <div class="section-head">
-    <p class="eyebrow">Experiences</p>
-    <h2>Three ways to Liora</h2>
+    <p class="kicker">Straight answers</p>
+    <h2 class="display">Your questions,<br>answered</h2>
   </div>
-  <div class="pkgs">
-    <div class="pkg-card">
-      <div class="pkg-tab">The Classic</div>
-      <div class="pkg-card-body">
-        <ul>
-          <li>3 hours of service</li>
-          <li>Studio-quality photos &amp; lighting</li>
-          <li>Custom print template</li>
-          <li>Unlimited sessions</li>
-          <li>Instant sharing</li>
-          <li>On-site host</li>
-          <li>Digital gallery</li>
-        </ul>
-        <p class="proposal-line">One all-inclusive proposal</p>
-        <a class="btn btn-ghost" href="contact.html">Inquire</a>
-      </div>
-      <div class="pkg-footer-band">Digital Only</div>
-    </div>
-    <div class="pkg-card">
-      <div class="pkg-tab">The Signature</div>
-      <div class="pkg-card-body">
-        <ul>
-          <li>Everything in The Classic, plus:</li>
-          <li>Unlimited prints (2x6 or 4x6)</li>
-          <li>Glam B&amp;W mode</li>
-          <li>Multiple template designs</li>
-        </ul>
-        <p class="proposal-line">One all-inclusive proposal</p>
-        <a class="btn btn-ghost" href="contact.html">Inquire</a>
-      </div>
-      <div class="pkg-footer-band">Digital + Print</div>
-    </div>
-    <div class="pkg-card">
-      <div class="pkg-tab">The Grande</div>
-      <div class="pkg-card-body">
-        <ul>
-          <li>5 hours of service</li>
-          <li>Everything in The Signature, plus:</li>
-          <li>Audio Guestbook included</li>
-          <li>Guest book album</li>
-          <li>Curated props</li>
-        </ul>
-        <p class="proposal-line">One all-inclusive proposal</p>
-        <a class="btn btn-ghost" href="contact.html">Inquire</a>
-      </div>
-      <div class="pkg-footer-band">Full Service</div>
+  <div class="faq-items" style="max-width:62.5rem; margin:0 auto;">
+    <details class="faq-item">
+      <summary><span>What if the camera or printer fails?</span><span class="faq-plus">+</span></summary>
+      <div class="faq-answer"><p>A second camera body, printer, and laptop travel to every event. Swapping takes about four minutes.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span>How early do you arrive?</span><span class="faq-plus">+</span></summary>
+      <div class="faq-answer"><p>90 minutes before your start time, with a test print done before guests arrive. We coordinate with your planner directly.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span>What do you need from my venue?</span><span class="faq-plus">+</span></summary>
+      <div class="faq-answer"><p>An 8 × 8 ft footprint, one standard outlet, and cover if we're outdoors. We bring the table, cable runs, and lighting.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span>Are you insured?</span><span class="faq-plus">+</span></summary>
+      <div class="faq-answer"><p>Fully. We carry $2M general liability and send a certificate naming your venue the same day you ask, which is what most venues require before load-in.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span>Do you charge for travel or idle time?</span><span class="faq-plus">+</span></summary>
+      <div class="faq-answer"><p>Not inside the Houston metro. If your reception has a two-hour dinner break, we idle at no charge and come back on.</p></div>
+    </details>
+  </div>
+  <div class="cta-row">
+    <a class="btn-pill-outline" href="faq.html">Read the full FAQ</a>
+  </div>
+</section>
+
+<section class="section dark" id="inquire">
+  <div class="page-hero-inner" style="text-align:center;">
+    <p class="kicker on-dark">Booking 2026 – 2027</p>
+    <h2 class="display">Start with the date.<br><em class="accent on-dark">We'll take it from there.</em></h2>
+    <p class="lede on-dark">Six short fields. One real reply within 24 hours. One all-in price.</p>
+    <div class="cta-row">
+      <a class="btn-pill on-dark" href="contact.html">Check availability</a>
+      <a class="btn-pill-outline on-dark" href="faq.html">Read the fine print</a>
     </div>
   </div>
 </section>
 
-<section id="how-to-book">
-  <div class="section-head">
-    <p class="eyebrow">How to Book</p>
-    <h2>Three steps to your date</h2>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Inquire</h3>
-      <p>Send us your event date and details. We'll confirm availability and answer questions within 24 hours.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Design</h3>
-      <p>We build your print template, backdrop, and overlay to match your event's palette and aesthetic.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Showtime</h3>
-      <p>Our attendant arrives early, sets up the oak booth, and your guests start capturing memories.</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img class="footer-logo" src="assets/liora-logo.png" alt="Liora Photo Co.">
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="enhancements.html">Enhancements</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-meta">
+      <span>Bilingual service, English and Spanish</span>
+      <span><a href="mailto:hello@lioraphoto.co">hello@lioraphoto.co</a></span>
+      <span>© 2026 Liora Photo Co. LLC, Houston, TX</span>
     </div>
   </div>
-</section>
-
-<section id="liora-promise">
-  <div class="section-head">
-    <p class="eyebrow">The Liora Promise</p>
-    <h2>What you can count on, every time</h2>
-  </div>
-  <div class="promise">
-    <div class="promise-item">
-      <svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>
-      <h3>One Price. No Surprises.</h3>
-      <p>Travel, setup, teardown, idle time, and your full digital gallery are always included. The number on your proposal is the number on your invoice.</p>
-    </div>
-    <div class="promise-item">
-      <svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>
-      <h3>A Host, Not a Booth-Sitter.</h3>
-      <p>Every event is staffed by a trained host who styles poses, welcomes guests, and keeps the energy up all night.</p>
-    </div>
-    <div class="promise-item">
-      <svg viewBox="0 0 24 30"><path d="M12 0 L15 12 L24 15 L15 18 L12 30 L9 18 L0 15 L9 12 Z" fill="#304945"/></svg>
-      <h3>En Español, Con Gusto.</h3>
-      <p>Fully bilingual service in English and Spanish, from first inquiry to event night.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band" id="book">
-  <p class="eyebrow">Booking 2026 – 2027</p>
-  <h2>Dates in Houston fill fast.</h2>
-  <p>Tell us about your event and we'll confirm availability within 24 hours.</p>
-  <a class="btn" href="contact.html">Check availability</a>
-</section>
-
-<footer>
-  <span>© 2026 Liora Photo Co. LLC · Houston, TX</span>
-  <span><a href="#liora-promise">The Liora Promise</a></span>
-  <span><a href="#">Instagram</a> &nbsp;·&nbsp; <a href="mailto:hello@lioraphoto.co">hello@lioraphoto.co</a></span>
 </footer>
 
+<script>
+(function () {
+  var rail = document.getElementById('boothRail');
+  if (!rail) return;
+  function scrollByDir(dir) {
+    var slide = rail.querySelector('.rail-slide');
+    var step = slide ? slide.getBoundingClientRect().width + 24 : rail.clientWidth * 0.8;
+    rail.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+  var prev = document.querySelector('[data-rail-prev]');
+  var next = document.querySelector('[data-rail-next]');
+  if (prev) prev.addEventListener('click', function () { scrollByDir(-1); });
+  if (next) next.addEventListener('click', function () { scrollByDir(1); });
+})();
+</script>
 </body>
 </html>
