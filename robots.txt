@@ -1,5 +1,4 @@
-# TODO: find-and-replace https://YOURDOMAIN.com with the live domain at deploy
 User-agent: *
 Allow: /
 
-Sitemap: https://YOURDOMAIN.com/sitemap.xml
+Sitemap: https://lioraphoto.co/sitemap.xml
