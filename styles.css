@@ -5,14 +5,16 @@
 :root {
   --cream: #fffaf6;
   --cream-card: #fffdf9;
-  --deep: #4a5224;
-  --green: #636b2f;
+  --charcoal: #2a2a2a;
+  --deep: #4f5526;
+  --green: #4f5526;
   --cream-text: #F2EDE3;
   --gold: #8A6F45;
   --gold-light: #C9B78E;
   --font-body: 'Jost', sans-serif;
   --font-display: 'Cormorant Garamond', serif;
   --font-accent: 'Playfair Display', serif;
+  --font-cursive: 'Pinyon Script', cursive;
   --font-mono: 'IBM Plex Mono', monospace;
 }
 * { box-sizing: border-box; }
@@ -123,12 +125,12 @@ img { max-width: 100%; }
 
 /* ---------- TYPOGRAPHY PATTERNS ---------- */
 .kicker {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: 600;
-  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  font-family: var(--font-cursive);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
   line-height: 1.15;
-  letter-spacing: 0.005em;
+  letter-spacing: 0.01em;
   color: var(--gold);
   margin: 0 0 0.7rem;
 }
@@ -143,7 +145,7 @@ h1.display, h2.display {
 }
 h1.display { font-size: clamp(2.5rem, 5.6vw, 5.5rem); }
 h2.display { font-size: clamp(2.1rem, 4.6vw, 4.25rem); line-height: 1; }
-em.accent { font-family: var(--font-accent); font-style: italic; font-weight: 500; font-size: 0.96em; color: var(--gold); }
+em.accent { font-family: var(--font-cursive); font-style: normal; font-weight: 400; font-size: 1.2em; color: var(--gold); }
 em.accent.on-dark { color: var(--gold-light); }
 .lede {
   font-size: clamp(0.94rem, 1.1vw, 1.125rem);
@@ -221,9 +223,10 @@ em.accent.on-dark { color: var(--gold-light); }
   padding: 0.6rem;
 }
 .hero-strip span { font-family: var(--font-mono); font-size: 0.53rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7B75; line-height: 1.7; }
-.hero-ticker-wrap { margin-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid rgba(242,237,227,0.14); overflow: hidden; padding: 1rem 0; }
-.hero-ticker { display: flex; width: max-content; animation: liora-ticker 42s linear infinite; }
-.hero-ticker span { font-family: var(--font-display); font-style: italic; font-size: 0.94rem; letter-spacing: 0.04em; color: rgba(242,237,227,0.58); white-space: nowrap; }
+/* ---------- EVENT TICKER (standalone band) ---------- */
+.ticker-section { background: var(--charcoal); overflow: hidden; padding: clamp(1.5rem, 3vw, 2.25rem) 0; }
+.ticker-track { display: flex; width: max-content; animation: liora-ticker 30s linear infinite; }
+.ticker-track span { font-family: var(--font-display); font-style: italic; font-size: clamp(1rem, 1.7vw, 1.375rem); letter-spacing: 0.04em; color: var(--cream); white-space: nowrap; }
 @keyframes liora-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ---------- PROMISE GRID ---------- */
@@ -302,7 +305,7 @@ em.accent.on-dark { color: var(--gold-light); }
 .faq-group { max-width: 62.5rem; margin: 0 auto clamp(3.5rem, 6vw, 5.5rem); }
 .faq-group:last-child { margin-bottom: 0; }
 .faq-cat { text-align: center; margin-bottom: clamp(1.75rem, 3.4vw, 2.75rem); }
-.faq-cat span { font-family: var(--font-accent); font-style: italic; font-weight: 600; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.15; color: var(--gold); }
+.faq-cat span { font-family: var(--font-cursive); font-style: normal; font-weight: 400; font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.15; color: var(--gold); }
 .faq-items { border-top: 1px solid rgba(36,64,58,0.16); }
 .faq-item { border-bottom: 1px solid rgba(36,64,58,0.16); }
 .faq-item summary {
@@ -443,5 +446,5 @@ em.accent.on-dark { color: var(--gold-light); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
-  .hero-ticker { animation: none; }
+  .ticker-track { animation: none; }
 }
