@@ -224,7 +224,7 @@ em.accent.on-dark { color: var(--gold-light); }
 }
 .hero-strip span { font-family: var(--font-mono); font-size: 0.53rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7B75; line-height: 1.7; }
 /* ---------- EVENT TICKER (standalone band) ---------- */
-.ticker-section { background: var(--charcoal); overflow: hidden; padding: clamp(1.5rem, 3vw, 2.25rem) 0; }
+.ticker-section { background: var(--charcoal); overflow: hidden; padding: clamp(0.75rem, 1.5vw, 1rem) 0; }
 .ticker-track { display: flex; width: max-content; animation: liora-ticker 30s linear infinite; }
 .ticker-track span { font-family: var(--font-display); font-style: italic; font-size: clamp(1rem, 1.7vw, 1.375rem); letter-spacing: 0.04em; color: var(--cream); white-space: nowrap; }
 @keyframes liora-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
