@@ -237,7 +237,7 @@ em.accent.on-dark { color: var(--gold-light); }
 .promise-card p { font-size: 0.9rem; line-height: 1.64; font-weight: 300; color: rgba(36,64,58,0.74); margin: 0; max-width: 30ch; }
 
 /* ---------- BOOTH CAROUSEL (dark rail with scroll-snap) ---------- */
-.rail-section { background: var(--deep); color: var(--cream-text); padding: clamp(4rem, 8vw, 7.5rem) 0; }
+.rail-section { background: var(--deep); color: var(--cream-text); padding: clamp(2.5rem, 4vw, 4rem) 0; }
 .rail-section .section-head { padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
 .rail { display: flex; gap: clamp(0.75rem, 1.6vw, 1.5rem); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0 clamp(1.25rem, 5vw, 4.5rem); scrollbar-width: none; -ms-overflow-style: none; }
 .rail::-webkit-scrollbar { display: none; }
