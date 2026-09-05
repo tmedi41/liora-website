@@ -261,7 +261,7 @@ em.accent.on-dark { color: var(--gold-light); }
 .rail-section .section-head { padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
 .rail { display: flex; gap: 0.125rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0 clamp(1.25rem, 5vw, 4.5rem); scrollbar-width: none; -ms-overflow-style: none; }
 .rail::-webkit-scrollbar { display: none; }
-.rail-slide { flex: 0 0 clamp(16rem, 70vw, 50rem); margin: 0; scroll-snap-align: center; }
+.rail-slide { flex: 0 0 clamp(16rem, 45vw, 32rem); margin: 0; scroll-snap-align: center; }
 .rail-visual { aspect-ratio: auto; background: transparent; border: none; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0.5rem; }
 .rail-visual span { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,227,0.62); line-height: 1.8; }
 .rail-caption { margin-top: 0.9rem; font-size: 0.95rem; font-weight: 300; color: rgba(242,237,227,0.74); }
