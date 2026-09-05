@@ -264,7 +264,7 @@ em.accent.on-dark { color: var(--gold-light); }
 .rail-slide { flex: 0 0 clamp(16rem, 45vw, 32rem); margin: 0; scroll-snap-align: center; }
 .rail-visual { aspect-ratio: auto; background: transparent; border: none; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0.5rem; }
 .rail-visual span { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,227,0.62); line-height: 1.8; }
-.rail-caption { margin-top: 0.9rem; font-size: 0.95rem; font-weight: 300; color: rgba(242,237,227,0.74); }
+.rail-caption { margin-top: 0.9rem; font-size: 0.95rem; font-family: var(--font-accent); font-weight: 300; color: rgba(242,237,227,0.74); }
 .rail-nav { display: flex; justify-content: center; gap: 0.9rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
 .rail-btn {
   width: 3.25rem;
@@ -314,12 +314,6 @@ em.accent.on-dark { color: var(--gold-light); }
 .coverage-card .tag { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
 .coverage-card .tag.muted { color: rgba(36,64,58,0.72); }
 .coverage-card p { font-family: var(--font-display); font-size: clamp(1.1rem, 1.7vw, 1.4rem); line-height: 1.4; max-width: 26ch; margin: 0; }
-
-/* ---------- REVIEWS (placeholder until real testimonials exist) ---------- */
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(1.25rem, 2.4vw, 2.25rem); max-width: 68rem; margin: 0 auto; }
-.review-card { margin: 0; background: var(--cream-card); padding: clamp(2rem, 3.2vw, 3rem); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; border-top: 2px solid var(--green); }
-.review-card p { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(36,64,58,0.5); line-height: 1.8; margin: 0; }
-.review-card footer { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(36,64,58,0.4); line-height: 1.7; }
 
 /* ---------- FAQ ACCORDION ---------- */
 .faq-group { max-width: 62.5rem; margin: 0 auto clamp(3.5rem, 6vw, 5.5rem); }
