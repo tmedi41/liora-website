@@ -434,6 +434,9 @@ em.accent.on-dark { color: var(--gold-light); }
   justify-content: space-between;
 }
 .footer-logo { height: 1.25rem; width: auto; display: block; opacity: 0.75; }
+.footer-socials { display: flex; gap: 1.5rem; align-items: center; }
+.footer-socials a { display: flex; align-items: center; justify-content: center; opacity: 0.75; transition: opacity 0.25s; }
+.footer-socials a:hover { opacity: 1; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; }
 .footer-nav a { color: rgba(242,237,227,0.68); }
 .footer-nav a:hover { color: var(--gold-light); }
@@ -444,6 +447,7 @@ em.accent.on-dark { color: var(--gold-light); }
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 940px) {
   .hamburger { display: flex; }
+  .site-header .btn-primary { display: none; }
   .main-nav a:not(.btn-primary) { display: none; }
   .main-nav {
     display: none;
