@@ -214,7 +214,7 @@ em.accent.on-dark { color: var(--gold-light); }
   width: clamp(7.5rem, 13vw, 10.5rem);
   aspect-ratio: 2 / 6;
   background: repeating-linear-gradient(135deg, #F2EDE3 0 10px, #E7DFD0 10px 20px);
-  border: 6px solid var(--cream-card);
+  border: none;
   box-shadow: 0 24px 60px rgba(0,0,0,0.34);
   display: flex;
   align-items: center;
