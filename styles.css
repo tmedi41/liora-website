@@ -259,7 +259,7 @@ em.accent.on-dark { color: var(--gold-light); }
 /* ---------- BOOTH CAROUSEL (dark rail with scroll-snap) ---------- */
 .rail-section { background: var(--deep); color: var(--cream-text); padding: clamp(2.5rem, 4vw, 4rem) 0; }
 .rail-section .section-head { padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
-.rail { display: flex; gap: clamp(0.75rem, 1.6vw, 1.5rem); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0 clamp(1.25rem, 5vw, 4.5rem); scrollbar-width: none; -ms-overflow-style: none; }
+.rail { display: flex; gap: clamp(0.2rem, 0.5vw, 0.5rem); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0 clamp(1.25rem, 5vw, 4.5rem); scrollbar-width: none; -ms-overflow-style: none; }
 .rail::-webkit-scrollbar { display: none; }
 .rail-slide { flex: 0 0 clamp(16rem, 70vw, 50rem); margin: 0; scroll-snap-align: center; }
 .rail-visual { aspect-ratio: auto; background: var(--deep); display: flex; align-items: center; justify-content: center; text-align: center; padding: 0.5rem; }
