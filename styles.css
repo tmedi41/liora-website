@@ -264,6 +264,8 @@ em.accent.on-dark { color: var(--gold-light); }
 .rail-slide { flex: 0 0 clamp(16rem, 45vw, 32rem); margin: 0; scroll-snap-align: center; }
 .rail-visual { aspect-ratio: auto; background: transparent; border: none; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0.5rem; }
 .rail-visual span { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,227,0.62); line-height: 1.8; }
+/* Placeholder rail-visual — used where a real photo isn't available yet, same striped treatment as pre-photo hero/rail visuals. */
+.rail-visual.placeholder { aspect-ratio: 16 / 9; background: repeating-linear-gradient(135deg, #3B534E 0 12px, #354D48 12px 24px); width: 100%; padding: 1.25rem; }
 .rail-caption { margin-top: 0.9rem; font-size: 0.95rem; font-family: var(--font-accent); font-weight: 300; color: rgba(242,237,227,0.74); }
 .rail-nav { display: flex; justify-content: center; gap: 0.9rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
 .rail-btn {
@@ -355,6 +357,12 @@ em.accent.on-dark { color: var(--gold-light); }
 .feature-list-row .name .sub { display: block; font-size: 0.84rem; color: rgba(36,64,58,0.7); margin-top: 0.2rem; }
 .feature-list-row .price { font-family: var(--font-display); font-size: 1.5rem; color: var(--green); white-space: nowrap; padding-top: 0.1rem; }
 .feature-list-row .price.included { font-family: var(--font-mono); font-size: 0.69rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+/* Pricing lists reused inside a dark .rail-section (enhancements carousels) — the light-mode border/price colors are invisible on the dark background otherwise. */
+.rail-section .feature-list { border-top-color: rgba(242,237,227,0.16); }
+.rail-section .feature-list-row { border-bottom-color: rgba(242,237,227,0.16); }
+.rail-section .feature-list-row .name .sub { color: rgba(242,237,227,0.65); }
+.rail-section .feature-list-row .price { color: var(--gold-light); }
+.rail-section .feature-list-row .price.included { color: var(--gold-light); }
 .feature-note { font-size: 0.84rem; line-height: 1.62; font-weight: 300; color: rgba(36,64,58,0.74); margin: 1.1rem 0 0; max-width: 46ch; }
 
 /* ---------- CALLOUT (good to know) ---------- */
