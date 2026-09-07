@@ -356,7 +356,8 @@
 <script>
 document.querySelectorAll('.rail').forEach(function (rail) {
   var originals = Array.prototype.slice.call(rail.querySelectorAll(':scope > .rail-slide'));
-  if (originals.length === 0) return;
+  var count = originals.length;
+  if (count === 0) return;
 
   function cloneSet() {
     return originals.map(function (slide) {
@@ -374,32 +375,79 @@ document.querySelectorAll('.rail').forEach(function (rail) {
   var afterClones = cloneSet();
   afterClones.forEach(function (clone) { rail.appendChild(clone); });
 
-  var batchWidth = firstReal.offsetLeft - beforeClones[0].offsetLeft;
+  var all = Array.prototype.slice.call(rail.querySelectorAll(':scope > .rail-slide'));
+  // all = [ ...beforeClones(count), ...originals(count), ...afterClones(count) ]
 
-  function jumpTo(x) {
+  // .rail-slide uses scroll-snap-align: center, so the browser's real rest
+  // position for a slide is its CENTER aligned to the rail's center — not
+  // its left edge. The previous version computed jump targets/thresholds
+  // from left-edge offsets, which don't line up with that rest position;
+  // once scroll-snap-type was restored, the browser's own snap correction
+  // fought our jump and could cascade into a wild, highly visible jump.
+  // Centering math avoids that mismatch entirely: this target is exactly
+  // where the browser would rest the given slide anyway.
+  function centerTarget(el) {
+    var railRect = rail.getBoundingClientRect();
+    var elRect = el.getBoundingClientRect();
+    var elCenter = (elRect.left - railRect.left) + rail.scrollLeft + elRect.width / 2;
+    return elCenter - rail.clientWidth / 2;
+  }
+
+  function centeredIndex() {
+    var railRect = rail.getBoundingClientRect();
+    var centerX = railRect.left + railRect.width / 2;
+    var best = 0;
+    var bestDist = Infinity;
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].getBoundingClientRect();
+      var d = Math.abs((r.left + r.width / 2) - centerX);
+      if (d < bestDist) { bestDist = d; best = i; }
+    }
+    return best;
+  }
+
+  function jumpToSlide(el) {
     var prevBehavior = rail.style.scrollBehavior;
     var prevSnap = rail.style.scrollSnapType;
     rail.style.scrollBehavior = 'auto';
     rail.style.scrollSnapType = 'none';
-    rail.scrollLeft = x;
-    rail.style.scrollSnapType = prevSnap;
-    rail.style.scrollBehavior = prevBehavior;
+    rail.scrollLeft = centerTarget(el);
+    // Wait a couple of frames before restoring snap/smooth so the browser
+    // fully commits the jump first, instead of racing its own snap
+    // resolution against a gesture already in progress.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        rail.style.scrollSnapType = prevSnap;
+        rail.style.scrollBehavior = prevBehavior;
+      });
+    });
   }
 
   // Start on the real (middle) batch so the carousel looks unchanged on load.
-  jumpTo(batchWidth);
+  jumpToSlide(firstReal);
 
   var repositioning = false;
+  var checkQueued = false;
   rail.addEventListener('scroll', function () {
-    if (repositioning) { repositioning = false; return; }
-    if (rail.scrollLeft >= batchWidth * 2) {
-      repositioning = true;
-      jumpTo(rail.scrollLeft - batchWidth);
-    } else if (rail.scrollLeft < batchWidth) {
-      repositioning = true;
-      jumpTo(rail.scrollLeft + batchWidth);
-    }
-  });
+    if (repositioning || checkQueued) return;
+    checkQueued = true;
+    // Coalesce bursts of scroll events into a single check per animation
+    // frame, and read the centered slide fresh inside it so the decision
+    // matches what's actually about to be painted.
+    requestAnimationFrame(function () {
+      checkQueued = false;
+      var idx = centeredIndex();
+      if (idx >= count * 2) {
+        repositioning = true;
+        jumpToSlide(originals[idx - count * 2]);
+        requestAnimationFrame(function () { requestAnimationFrame(function () { repositioning = false; }); });
+      } else if (idx < count) {
+        repositioning = true;
+        jumpToSlide(originals[idx]);
+        requestAnimationFrame(function () { requestAnimationFrame(function () { repositioning = false; }); });
+      }
+    });
+  }, { passive: true });
 });
 </script>
 </body>
