@@ -265,14 +265,14 @@ em.accent.on-dark { color: var(--gold-light); }
 .rail-visual {
   aspect-ratio: auto;
   background: transparent;
-  border: 3px solid var(--charcoal);
+  border: 24px solid var(--charcoal);
   box-shadow: none;
   clip-path: none;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0;
 }
 .rail-visual span { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,227,0.62); line-height: 1.8; }
 /* Placeholder rail-visual — used where a real photo isn't available yet, same striped treatment as pre-photo hero/rail visuals. */
