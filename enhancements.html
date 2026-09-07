@@ -47,11 +47,11 @@
   </div>
 </section>
 
-<section class="section dark" id="backdrops">
+<section class="section" id="backdrops">
   <div class="section-head">
-    <p class="kicker on-dark">01 / Backdrops</p>
+    <p class="kicker">01 / Backdrops</p>
     <h2 class="display">Set the scene behind every shot.</h2>
-    <p class="lede on-dark">Every booking includes your choice from the classic collection: clean, elegant solids in white, black, and seasonal tones. Upgrade when you want the backdrop itself to be part of the décor.</p>
+    <p class="lede">Every booking includes your choice from the classic collection: clean, elegant solids in white, black, and seasonal tones. Upgrade when you want the backdrop itself to be part of the décor.</p>
   </div>
   <div class="rail" id="backdropsRail">
     <figure class="rail-slide">
@@ -85,7 +85,7 @@
   </div>
 </section>
 
-<section class="section card-bg" id="glam">
+<section class="section" id="glam">
   <div class="section-head">
     <p class="kicker">02 / Spotlight Glam</p>
     <h2 class="display">High fashion, one frame at a time.</h2>
@@ -111,11 +111,11 @@
   </div>
 </section>
 
-<section class="section dark" id="templates-props">
+<section class="section" id="templates-props">
   <div class="section-head">
-    <p class="kicker on-dark">03 / Templates &amp; props</p>
+    <p class="kicker">03 / Templates &amp; props</p>
     <h2 class="display">Details that make the strip yours.</h2>
-    <p class="lede on-dark">One custom print template, start screen, and sharing screen come with every booking, designed to your palette with two rounds of revisions. Add more when you want a second look for the after-party, or a curated prop set styled to your event.</p>
+    <p class="lede">One custom print template, start screen, and sharing screen come with every booking, designed to your palette with two rounds of revisions. Add more when you want a second look for the after-party, or a curated prop set styled to your event.</p>
   </div>
   <div class="rail" id="templatesRail">
     <figure class="rail-slide">
@@ -138,13 +138,6 @@
   <div class="rail-nav">
     <button type="button" class="rail-btn" data-rail-prev="templatesRail" aria-label="Previous example">&larr;</button>
     <button type="button" class="rail-btn" data-rail-next="templatesRail" aria-label="Next example">&rarr;</button>
-  </div>
-</section>
-
-<section class="section dark cta-section">
-  <div class="section-head">
-    <h2 class="display">Ready to enhance your event?</h2>
-    <a href="contact.html" class="btn-primary">Contact for pricing</a>
   </div>
 </section>
 
@@ -208,6 +201,34 @@
     if (next) next.addEventListener("click", function () { scrollByDir(1); });
   });
 })();
+</script>
+<script>
+document.querySelectorAll('.rail').forEach(rail => {
+  let isLooping = false;
+  rail.addEventListener('scroll', () => {
+    if (isLooping) { isLooping = false; return; }
+    const totalWidth = rail.scrollWidth;
+    const visibleWidth = rail.clientWidth;
+    const currentScroll = rail.scrollLeft;
+    const prevBehavior = rail.style.scrollBehavior;
+
+    // If scrolled to near the end, jump back to start to loop
+    if (currentScroll + visibleWidth >= totalWidth - 50) {
+      isLooping = true;
+      rail.style.scrollBehavior = 'auto';
+      rail.scrollLeft = 0;
+      rail.style.scrollBehavior = prevBehavior;
+    }
+
+    // If scrolled back past start, jump to near the end to loop backward
+    else if (currentScroll <= 0) {
+      isLooping = true;
+      rail.style.scrollBehavior = 'auto';
+      rail.scrollLeft = totalWidth - visibleWidth - 50;
+      rail.style.scrollBehavior = prevBehavior;
+    }
+  });
+});
 </script>
 </body>
 </html>

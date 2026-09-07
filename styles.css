@@ -267,7 +267,7 @@ em.accent.on-dark { color: var(--gold-light); }
 /* Placeholder rail-visual — used where a real photo isn't available yet, same striped treatment as pre-photo hero/rail visuals. */
 .rail-visual.placeholder { aspect-ratio: 16 / 9; background: repeating-linear-gradient(135deg, #3B534E 0 12px, #354D48 12px 24px); width: 100%; padding: 1.25rem; }
 .rail-caption { margin-top: 0.9rem; font-size: 0.95rem; font-family: var(--font-accent); font-weight: 300; color: rgba(242,237,227,0.74); }
-.section.card-bg .rail-caption { color: rgba(36,64,58,0.74); }
+.section .rail-caption { color: var(--green); }
 .rail-nav { display: flex; justify-content: center; gap: 0.9rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
 .rail-btn {
   width: 3.25rem;
@@ -340,23 +340,6 @@ em.accent.on-dark { color: var(--gold-light); }
 .faq-item[open] .faq-plus { transform: rotate(45deg); }
 .faq-answer { display: flex; flex-direction: column; gap: 0.875rem; margin: 0 0 1.75rem; max-width: 66ch; font-size: 0.94rem; line-height: 1.68; font-weight: 300; color: rgba(36,64,58,0.78); }
 .faq-answer p { margin: 0; }
-
-/* ---------- FEATURE ROWS (enhancements) ---------- */
-.feature-row { display: flex; flex-wrap: wrap; gap: clamp(2rem, 4.5vw, 4.5rem); align-items: center; }
-.feature-row.reverse { flex-direction: row-reverse; }
-.feature-visual { flex: 1 1 20rem; min-width: 0; }
-.feature-visual .visual-box { aspect-ratio: 4 / 3; background: repeating-linear-gradient(135deg, #E7DFD0 0 12px, #DED5C3 12px 24px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 1.5rem; }
-.feature-visual.on-dark .visual-box { background: repeating-linear-gradient(135deg, #2A413B 0 12px, #243B35 12px 24px); }
-.visual-box span { font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.12em; text-transform: uppercase; color: #6E7B75; line-height: 1.8; }
-.feature-visual.on-dark .visual-box span { color: rgba(242,237,227,0.6); }
-.feature-copy { flex: 1 1 23.75rem; min-width: 0; }
-.feature-copy h2 { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.875rem, 3.4vw, 3rem); line-height: 1.04; letter-spacing: -0.015em; margin: 0 0 1.1rem; text-wrap: pretty; }
-.feature-copy > p { font-size: 0.97rem; line-height: 1.66; font-weight: 300; color: rgba(36,64,58,0.78); margin: 0 0 1.75rem; max-width: 46ch; }
-.feature-note { font-size: 0.84rem; line-height: 1.62; font-weight: 300; color: rgba(36,64,58,0.74); margin: 1.1rem 0 0; max-width: 46ch; }
-
-/* ---------- CALLOUT (good to know) ---------- */
-.cta-section { text-align: center; padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1.25rem, 5vw, 4.5rem); }
-.cta-section .section-head { margin-bottom: clamp(2rem, 3vw, 2.5rem); }
 
 /* ---------- CONTACT FORM ---------- */
 .form-wrap { max-width: 38rem; margin: 0 auto; }

@@ -353,5 +353,33 @@
   });
 })();
 </script>
+<script>
+document.querySelectorAll('.rail').forEach(rail => {
+  let isLooping = false;
+  rail.addEventListener('scroll', () => {
+    if (isLooping) { isLooping = false; return; }
+    const totalWidth = rail.scrollWidth;
+    const visibleWidth = rail.clientWidth;
+    const currentScroll = rail.scrollLeft;
+    const prevBehavior = rail.style.scrollBehavior;
+
+    // If scrolled to near the end, jump back to start to loop
+    if (currentScroll + visibleWidth >= totalWidth - 50) {
+      isLooping = true;
+      rail.style.scrollBehavior = 'auto';
+      rail.scrollLeft = 0;
+      rail.style.scrollBehavior = prevBehavior;
+    }
+
+    // If scrolled back past start, jump to near the end to loop backward
+    else if (currentScroll <= 0) {
+      isLooping = true;
+      rail.style.scrollBehavior = 'auto';
+      rail.scrollLeft = totalWidth - visibleWidth - 50;
+      rail.style.scrollBehavior = prevBehavior;
+    }
+  });
+});
+</script>
 </body>
 </html>
