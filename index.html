@@ -427,15 +427,10 @@ document.querySelectorAll('.rail').forEach(function (rail) {
   jumpToSlide(firstReal);
 
   var repositioning = false;
-  var checkQueued = false;
-  rail.addEventListener('scroll', function () {
-    if (repositioning || checkQueued) return;
-    checkQueued = true;
-    // Coalesce bursts of scroll events into a single check per animation
-    // frame, and read the centered slide fresh inside it so the decision
-    // matches what's actually about to be painted.
+
+  function checkAndReposition() {
+    if (repositioning) return;
     requestAnimationFrame(function () {
-      checkQueued = false;
       var idx = centeredIndex();
       if (idx >= count * 2) {
         repositioning = true;
@@ -447,7 +442,30 @@ document.querySelectorAll('.rail').forEach(function (rail) {
         requestAnimationFrame(function () { requestAnimationFrame(function () { repositioning = false; }); });
       }
     });
-  }, { passive: true });
+  }
+
+  // Trackpad/wheel scrolling has real OS-driven momentum that keeps firing
+  // scroll events after the user stops touching the input — repositioning
+  // while that's still happening fights the browser's own momentum physics
+  // (it keeps nudging scrollLeft toward where the gesture "was headed"),
+  // which reads as a stutter right at the wrap point. Button clicks don't
+  // have this problem since they're a single bounded smooth-scroll we
+  // trigger ourselves. So: only check once the scroll has genuinely
+  // settled, via the native scrollend event where supported, falling back
+  // to a quiet-period timer otherwise.
+  if ('onscrollend' in window) {
+    rail.addEventListener('scrollend', checkAndReposition, { passive: true });
+  } else {
+    var settleTimer = null;
+    rail.addEventListener('scroll', function () {
+      if (repositioning) return;
+      if (settleTimer) clearTimeout(settleTimer);
+      settleTimer = setTimeout(function () {
+        settleTimer = null;
+        checkAndReposition();
+      }, 140);
+    }, { passive: true });
+  }
 });
 </script>
 </body>
