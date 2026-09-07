@@ -203,29 +203,50 @@
 })();
 </script>
 <script>
-document.querySelectorAll('.rail').forEach(rail => {
-  let isLooping = false;
-  rail.addEventListener('scroll', () => {
-    if (isLooping) { isLooping = false; return; }
-    const totalWidth = rail.scrollWidth;
-    const visibleWidth = rail.clientWidth;
-    const currentScroll = rail.scrollLeft;
-    const prevBehavior = rail.style.scrollBehavior;
+document.querySelectorAll('.rail').forEach(function (rail) {
+  var originals = Array.prototype.slice.call(rail.querySelectorAll(':scope > .rail-slide'));
+  if (originals.length === 0) return;
 
-    // If scrolled to near the end, jump back to start to loop
-    if (currentScroll + visibleWidth >= totalWidth - 50) {
-      isLooping = true;
-      rail.style.scrollBehavior = 'auto';
-      rail.scrollLeft = 0;
-      rail.style.scrollBehavior = prevBehavior;
-    }
+  function cloneSet() {
+    return originals.map(function (slide) {
+      var clone = slide.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+      return clone;
+    });
+  }
 
-    // If scrolled back past start, jump to near the end to loop backward
-    else if (currentScroll <= 0) {
-      isLooping = true;
-      rail.style.scrollBehavior = 'auto';
-      rail.scrollLeft = totalWidth - visibleWidth - 50;
-      rail.style.scrollBehavior = prevBehavior;
+  var firstReal = originals[0];
+  var beforeClones = cloneSet();
+  beforeClones.forEach(function (clone) { rail.insertBefore(clone, firstReal); });
+
+  var afterClones = cloneSet();
+  afterClones.forEach(function (clone) { rail.appendChild(clone); });
+
+  var batchWidth = firstReal.offsetLeft - beforeClones[0].offsetLeft;
+
+  function jumpTo(x) {
+    var prevBehavior = rail.style.scrollBehavior;
+    var prevSnap = rail.style.scrollSnapType;
+    rail.style.scrollBehavior = 'auto';
+    rail.style.scrollSnapType = 'none';
+    rail.scrollLeft = x;
+    rail.style.scrollSnapType = prevSnap;
+    rail.style.scrollBehavior = prevBehavior;
+  }
+
+  // Start on the real (middle) batch so the carousel looks unchanged on load.
+  jumpTo(batchWidth);
+
+  var repositioning = false;
+  rail.addEventListener('scroll', function () {
+    if (repositioning) { repositioning = false; return; }
+    if (rail.scrollLeft >= batchWidth * 2) {
+      repositioning = true;
+      jumpTo(rail.scrollLeft - batchWidth);
+    } else if (rail.scrollLeft < batchWidth) {
+      repositioning = true;
+      jumpTo(rail.scrollLeft + batchWidth);
     }
   });
 });
