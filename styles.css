@@ -250,11 +250,11 @@ em.accent.on-dark { color: var(--gold-light); }
 @keyframes liora-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ---------- PROMISE GRID ---------- */
-.promise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 1px; background: rgba(36,64,58,0.16); border: 1px solid rgba(36,64,58,0.16); }
-.promise-card { background: var(--cream-card); padding: clamp(2rem, 3.4vw, 3.25rem) clamp(1.5rem, 2.6vw, 2.5rem); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.1rem; }
-.promise-num { width: 3.4rem; height: 3.4rem; border-radius: 50%; border: 1px solid rgba(36,64,58,0.24); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); }
-.promise-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 2.1vw, 2.06rem); line-height: 1.08; margin: 0; }
-.promise-card p { font-size: 0.9rem; line-height: 1.64; font-weight: 300; color: rgba(36,64,58,0.74); margin: 0; max-width: 30ch; }
+/* ---------- ICON BOOTH (feature list) ---------- */
+.feature-list { max-width: 44rem; margin: 0 auto; border-top: 1px solid rgba(36,64,58,0.16); }
+.feature-item { display: flex; align-items: baseline; gap: 1.25rem; padding: 1rem 0.25rem; border-bottom: 1px solid rgba(36,64,58,0.16); }
+.feature-num { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); flex-shrink: 0; width: 1.6rem; }
+.feature-item p { margin: 0; font-size: 0.94rem; font-weight: 300; color: rgba(36,64,58,0.82); }
 
 /* ---------- BOOTH CAROUSEL (dark rail with scroll-snap) ---------- */
 .rail-section { background: var(--deep); color: var(--cream-text); padding: clamp(2.5rem, 4vw, 4rem) 0; }
@@ -307,13 +307,17 @@ em.accent.on-dark { color: var(--gold-light); }
 
 /* ---------- EXPERIENCE / PACKAGES ---------- */
 .pkg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 1px; background: rgba(36,64,58,0.16); border: 1px solid rgba(36,64,58,0.16); }
-.pkg-card { background: var(--cream); padding: clamp(1.75rem, 2.8vw, 2.75rem); display: flex; flex-direction: column; }
+.pkg-card { background: var(--cream); padding: clamp(1.75rem, 2.8vw, 2.75rem); display: flex; flex-direction: column; position: relative; }
 .pkg-card.featured { background: var(--green); color: var(--cream-text); }
 .pkg-tag-row { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
 .pkg-tag { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
 .pkg-card.featured .pkg-tag { color: var(--gold-light); }
 .pkg-badge { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,227,0.68); }
-.pkg-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 2.1rem); line-height: 1; margin: 0 0 1.5rem; }
+.pkg-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 2.1rem); line-height: 1; margin: 0 0 0.9rem; }
+.pkg-price { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 1.5rem; }
+.pkg-amount { font-family: var(--font-display); font-size: clamp(2.1rem, 3vw, 2.6rem); line-height: 1; }
+.pkg-duration { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(36,64,58,0.58); }
+.pkg-card.featured .pkg-duration { color: rgba(242,237,227,0.68); }
 .pkg-list { display: flex; flex-direction: column; gap: 0.7rem; font-size: 0.875rem; font-weight: 300; color: rgba(36,64,58,0.78); margin-bottom: 2rem; }
 .pkg-card.featured .pkg-list { color: rgba(242,237,227,0.82); }
 .pkg-card .btn-primary { display: block; width: 100%; margin-top: auto; }
@@ -461,6 +465,9 @@ em.accent.on-dark { color: var(--gold-light); }
   .feature-row, .feature-row.reverse { flex-direction: column; }
   .field-row { grid-template-columns: 1fr; gap: 0; }
   .coverage-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 701px) {
+  .pkg-card.featured { transform: translateY(-0.9rem); box-shadow: 0 1.75rem 3.25rem rgba(36,64,58,0.22); z-index: 1; }
 }
 @media (max-width: 520px) {
   .site-header { padding: 1rem clamp(1.25rem, 5vw, 4.5rem); }
