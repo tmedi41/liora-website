@@ -251,10 +251,11 @@ em.accent.on-dark { color: var(--gold-light); }
 
 /* ---------- PROMISE GRID ---------- */
 /* ---------- ICON BOOTH (feature list) ---------- */
+.booth-desc { font-family: var(--font-accent); color: var(--charcoal); }
 .feature-list { max-width: 44rem; margin: 0 auto; border-top: 1px solid rgba(36,64,58,0.16); }
 .feature-item { display: flex; align-items: baseline; gap: 1.25rem; padding: 1rem 0.25rem; border-bottom: 1px solid rgba(36,64,58,0.16); }
-.feature-num { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); flex-shrink: 0; width: 1.6rem; }
-.feature-item p { margin: 0; font-size: 0.94rem; font-weight: 300; color: rgba(36,64,58,0.82); }
+.feature-num { font-family: var(--font-cursive); font-size: 1.5rem; color: var(--gold); flex-shrink: 0; width: 2.25rem; }
+.feature-item p { margin: 0; font-family: var(--font-accent); font-size: 1rem; color: var(--charcoal); }
 
 /* ---------- BOOTH CAROUSEL (dark rail with scroll-snap) ---------- */
 .rail-section { background: var(--deep); color: var(--cream-text); padding: clamp(2.5rem, 4vw, 4rem) 0; }
