@@ -297,6 +297,9 @@ em.accent.on-dark { color: var(--gold-light); }
   transition: border-color 0.25s, color 0.25s;
 }
 .rail-btn:hover { border-color: var(--gold-light); color: var(--gold-light); }
+/* Backdrops rail — smaller swatch images, extends closer to the section edges */
+#backdropsRail { padding: 0; }
+#backdropsRail .rail-slide { flex: 0 0 clamp(14rem, 45vw, 26rem); }
 
 /* ---------- FEATURE ROW (text + video split) ---------- */
 .feature-row { display: flex; align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
