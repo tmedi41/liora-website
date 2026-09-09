@@ -187,6 +187,8 @@ em.accent.on-dark { color: var(--gold-light); }
 .section { padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1.25rem, 5vw, 4.5rem); }
 .section.dark { background: var(--deep); color: var(--cream-text); }
 .section.card-bg { background: var(--cream-card); }
+.section.full-edge { padding: 0; margin: 0; }
+.section.full-edge .section-head { padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
 .section-head { text-align: center; max-width: 44rem; margin: 0 auto clamp(2.5rem, 4vw, 3.75rem); }
 
 /* ---------- HERO (home) ---------- */
@@ -298,7 +300,7 @@ em.accent.on-dark { color: var(--gold-light); }
 }
 .rail-btn:hover { border-color: var(--gold-light); color: var(--gold-light); }
 /* Backdrops rail — smaller swatch images, extends closer to the section edges */
-#backdropsRail { padding: 0; }
+#backdropsRail { padding: 0; width: 100%; }
 #backdropsRail .rail-slide { flex: 0 0 clamp(14rem, 45vw, 26rem); }
 
 /* ---------- FEATURE ROW (text + video split) ---------- */
