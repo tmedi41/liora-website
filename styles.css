@@ -46,7 +46,7 @@ img { max-width: 100%; }
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 1.1rem clamp(1.25rem, 5vw, 4.5rem);
+  padding: 0.7rem clamp(1.25rem, 5vw, 4.5rem);
   background: rgba(255,250,246,0.92);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(36,64,58,0.1);
@@ -192,9 +192,59 @@ em.accent.on-dark { color: var(--gold-light); }
 .section-head { text-align: center; max-width: 44rem; margin: 0 auto clamp(2.5rem, 4vw, 3.75rem); }
 
 /* ---------- HERO (home) ---------- */
-.hero { position: relative; background: var(--deep); color: var(--cream-text); padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 5vw, 4.5rem) 0; }
-.hero-inner { display: flex; flex-wrap: wrap; gap: clamp(2rem, 5vw, 4rem); align-items: flex-end; max-width: 90rem; margin: 0 auto; }
-.hero-copy { flex: 1 1 25rem; min-width: 0; padding-bottom: clamp(2.5rem, 5vw, 4.75rem); }
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 36rem;
+  overflow: hidden;
+  color: var(--cream-text);
+  background: var(--deep);
+}
+.hero-carousel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-carousel .swiper-wrapper,
+.hero-carousel .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+.hero-carousel .swiper-slide {
+  background: var(--deep);
+  position: relative;
+}
+.hero-carousel .swiper-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+.hero-carousel .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 6vw, 6rem);
+  background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.18) 55%, transparent 100%);
+  animation: hero-fade-in 1s ease both;
+}
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(1rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .hero-badge {
   display: flex;
   align-items: center;
@@ -203,48 +253,27 @@ em.accent.on-dark { color: var(--gold-light); }
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--gold-light);
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1rem, 2vw, 1.75rem);
 }
 .hero-badge .line { width: 1.75rem; height: 1px; background: var(--gold-light); display: block; }
-.hero-copy h1 {
+.hero-overlay h1 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.3rem, 6vw, 6rem);
+  font-size: clamp(2.4rem, 6vw, 6rem);
   line-height: 0.98;
   letter-spacing: -0.02em;
-  margin: 0 0 clamp(1.25rem, 2.4vw, 1.9rem);
+  margin: 0 0 clamp(1rem, 2vw, 1.6rem);
+  max-width: 20ch;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
-.hero-copy .lede { color: rgba(242,237,227,0.72); margin: 0 0 clamp(1.6rem, 3vw, 2.25rem); text-align: left; max-width: 38ch; }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: clamp(1.9rem, 3.6vw, 2.75rem); }
-.hero-trust { display: flex; flex-wrap: wrap; gap: 0.6rem 1.75rem; font-size: 0.8rem; letter-spacing: 0.03em; color: rgba(242,237,227,0.62); }
-.hero-visual { flex: 1 1 21rem; min-width: 0; position: relative; align-self: stretch; min-height: clamp(24rem, 48vw, 41rem); display: flex; margin-left: clamp(1.5rem, 3vw, 3.5rem); }
-.hero-photo {
-  flex: 1;
-  background: repeating-linear-gradient(135deg, #f0f0f0 0 12px, #d3d3d3 12px 24px);
-  border-radius: 3px 3px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.5rem;
+.hero-overlay .lede {
+  color: rgba(242,237,227,0.82);
+  margin: 0 0 clamp(1.5rem, 2.8vw, 2.25rem);
+  text-align: left;
+  max-width: 42ch;
 }
-.hero-photo span { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(42,42,42,0.55); line-height: 1.8; }
-.hero-strip {
-  position: absolute;
-  left: calc(-1 * clamp(1.25rem, 2.6vw, 3.25rem));
-  bottom: clamp(3rem, 6vw, 5.5rem);
-  width: clamp(7.5rem, 13vw, 10.5rem);
-  aspect-ratio: 2 / 6;
-  background: repeating-linear-gradient(135deg, #f0f0f0 0 12px, #d3d3d3 12px 24px);
-  border: none;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.34);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0.6rem;
-}
-.hero-strip span { font-family: var(--font-mono); font-size: 0.53rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6E7B75; line-height: 1.7; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.8rem; letter-spacing: 0.03em; color: rgba(242,237,227,0.62); }
 /* ---------- EVENT TICKER (standalone band) ---------- */
 .ticker-section { background: var(--charcoal); overflow: hidden; padding: clamp(0.75rem, 1.5vw, 1rem) 0; }
 .ticker-track { display: flex; width: max-content; animation: liora-ticker 30s linear infinite; }
@@ -495,4 +524,43 @@ em.accent.on-dark { color: var(--gold-light); }
   html { scroll-behavior: auto; }
   * { transition: none !important; }
   .ticker-track { animation: none; }
+}
+
+/* ========== HERO CAROUSEL - TEXT FADE-IN ========== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero-copy h1 { animation: fadeIn 0.8s ease-out 0.4s forwards; opacity: 0; }
+.hero-copy .lede { animation: fadeIn 0.8s ease-out 0.6s forwards; opacity: 0; }
+.hero-ctas { animation: fadeIn 0.8s ease-out 0.8s forwards; opacity: 0; }
+.hero-badge { animation: fadeIn 0.8s ease-out 0.2s forwards; opacity: 0; }
+.hero-trust { animation: fadeIn 0.8s ease-out 1s forwards; opacity: 0; }
+
+@media (max-width: 768px) {
+  .hero-carousel { border-radius: 0; }
+  .hero-photo { border-radius: 0; }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: var(--cream);
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px;
+  font-weight: bold;
 }
