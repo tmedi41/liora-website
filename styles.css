@@ -274,6 +274,83 @@ em.accent.on-dark { color: var(--gold-light); }
 }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
 .hero-trust { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.8rem; letter-spacing: 0.03em; color: rgba(242,237,227,0.62); }
+/* ---------- REVEAL SCROLL (Handcrafted section) ---------- */
+.reveal {
+  background: var(--cream);
+}
+.reveal-inner {
+  position: relative;
+}
+/* Mobile base: text gets normal section padding, photos stack below */
+.reveal-text {
+  padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1.25rem, 5vw, 4.5rem);
+}
+.reveal-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 clamp(1.25rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem);
+}
+.rp {
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+}
+
+/* Scoped text overrides for the reveal section */
+.reveal .kicker {
+  color: var(--green);
+  font-size: clamp(3.2rem, 5.85vw, 4.35rem);
+  max-width: 26rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.reveal .booth-desc {
+  font-size: clamp(1.08rem, 1.3vw, 1.3rem);
+}
+.reveal .feature-list {
+  max-width: 34rem;
+}
+.reveal .feature-num {
+  font-size: 1.68rem;
+}
+.reveal .feature-item p {
+  font-size: 1.12rem;
+}
+
+/* Desktop: sticky text, photos scroll past the edges */
+@media (min-width: 900px) {
+  .reveal-text {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+  }
+  .reveal-photos {
+    position: relative;
+    z-index: 2;
+    margin-top: -100vh;
+    pointer-events: none;
+    background: transparent;
+    height: 165vh;
+  }
+  .rp {
+    position: absolute;
+    height: auto;
+    border-radius: 2px;
+    box-shadow: 0 8px 36px rgba(0,0,0,0.17);
+  }
+  /* Pair 1 — rises into view together */
+  .rp-1 { top: 6vh;  left: 0;   width: 24%; }
+  .rp-2 { top: 30vh; right: 0;  width: 19%; }
+  /* Pair 2 — rises into view together, lower in the scroll */
+  .rp-3 { top: 75vh; right: 3%; width: 26%; }
+  .rp-4 { top: 92vh; left: 4%;  width: 20%; }
+}
+
 /* ---------- EVENT TICKER (standalone band) ---------- */
 .ticker-section { background: var(--charcoal); overflow: hidden; padding: clamp(0.75rem, 1.5vw, 1rem) 0; }
 .ticker-track { display: flex; width: max-content; animation: liora-ticker 30s linear infinite; }
@@ -287,50 +364,6 @@ em.accent.on-dark { color: var(--gold-light); }
 .feature-item { display: flex; align-items: baseline; gap: 1.25rem; padding: 1rem 0.25rem; border-bottom: 1px solid rgba(36,64,58,0.16); }
 .feature-num { font-family: var(--font-cursive); font-size: 1.5rem; color: var(--gold); flex-shrink: 0; width: 2.25rem; }
 .feature-item p { margin: 0; font-family: var(--font-accent); font-size: 1rem; color: var(--charcoal); }
-
-/* ---------- BOOTH CAROUSEL (dark rail with scroll-snap) ---------- */
-.rail-section { background: var(--deep); color: var(--cream-text); padding: clamp(2.5rem, 4vw, 4rem) 0; }
-.rail-section .section-head { padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
-.rail { display: flex; gap: 0; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 0 clamp(1.25rem, 5vw, 4.5rem); scrollbar-width: none; -ms-overflow-style: none; }
-.rail::-webkit-scrollbar { display: none; }
-.rail-slide { flex: 0 0 clamp(16rem, 45vw, 32rem); margin: 0; scroll-snap-align: center; }
-.rail-visual {
-  aspect-ratio: auto;
-  background: transparent;
-  border: 24px solid var(--charcoal);
-  box-shadow: none;
-  clip-path: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0;
-}
-.rail-visual span { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(42,42,42,0.62); line-height: 1.8; }
-/* Placeholder rail-visual — used where a real photo isn't available yet, same striped treatment as pre-photo hero/rail visuals. */
-.rail-visual.placeholder { aspect-ratio: 16 / 9; background: repeating-linear-gradient(135deg, #f0f0f0 0 12px, #d3d3d3 12px 24px); width: 100%; padding: 1.25rem; }
-.rail-caption { margin-top: 0.9rem; font-size: 0.95rem; font-family: var(--font-accent); font-weight: 700; text-align: center; color: rgba(242,237,227,0.74); }
-.section .rail-caption { color: var(--green); }
-.rail-nav { display: flex; justify-content: center; gap: 0.9rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); padding: 0 clamp(1.25rem, 5vw, 4.5rem); }
-.rail-btn {
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 50%;
-  border: 1px solid rgba(242,237,227,0.34);
-  background: transparent;
-  color: var(--cream-text);
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.25s, color 0.25s;
-}
-.rail-btn:hover { border-color: var(--gold-light); color: var(--gold-light); }
-/* Backdrops rail — smaller swatch images, extends closer to the section edges */
-#backdropsRail { padding: 0; width: 100%; }
-#backdropsRail .rail-slide { flex: 0 0 clamp(14rem, 45vw, 26rem); }
 
 /* ---------- FEATURE ROW (text + video split) ---------- */
 .feature-row { display: flex; align-items: center; gap: clamp(2rem, 5vw, 4.5rem); }
@@ -349,6 +382,116 @@ em.accent.on-dark { color: var(--gold-light); }
 .step-tag { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
 .step h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 2.1vw, 2rem); line-height: 1.1; margin: 0; }
 .step p { font-size: 0.94rem; line-height: 1.62; font-weight: 300; color: rgba(36,64,58,0.74); margin: 0; max-width: 32ch; }
+
+/* How to Book — cream background, green/gold text, enlarged */
+#how-to-book {
+  background: var(--cream);
+  color: var(--green);
+}
+
+/* ---------- STATEMENT SECTION (pinned glide anchor) ---------- */
+.statement-pin {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 900px) {
+  .statement-pin { height: 100vh; }
+}
+.statement-pin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('assets/45_Dinner-with-Friends_Details_Booth_Stock.jpg') center / cover no-repeat;
+  filter: grayscale(55%);
+  z-index: 0;
+}
+.statement-pin::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+.statement-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+  text-align: center;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+.statement-serif {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--cream-text);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.statement-script {
+  display: block;
+  font-family: var(--font-cursive);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 8.5vw, 8.5rem);
+  line-height: 1;
+  color: var(--gold-light);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+/* Desktop glide: statement pins inside wrapper, releases when wrapper exits */
+@media (min-width: 900px) {
+  .glide-stack {
+    position: relative;
+  }
+  .statement-pin {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  #how-to-book {
+    position: relative;
+    z-index: 5;
+  }
+}
+#how-to-book .kicker {
+  color: var(--gold);
+  font-size: clamp(2.45rem, 4.5vw, 3.35rem);
+}
+#how-to-book .step-num { color: rgba(79, 85, 38, 0.2); }
+#how-to-book .step-tag { color: var(--gold); font-size: 0.72rem; }
+#how-to-book .step h3 {
+  color: var(--green);
+  font-size: clamp(1.88rem, 2.6vw, 2.5rem);
+}
+#how-to-book .step p {
+  color: rgba(36, 64, 58, 0.74);
+  font-size: clamp(1.05rem, 1.2vw, 1.18rem);
+}
+#how-to-book .btn-primary {
+  background: var(--green);
+  color: var(--cream-text);
+  border-color: var(--green);
+}
+#how-to-book .btn-primary:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--cream-text);
+}
+
+/* ---------- EXPERIENCES section headings ---------- */
+#experiences .kicker    { font-size: clamp(2.45rem, 4.5vw, 3.35rem); }
+#experiences h2.display { font-size: clamp(2.75rem, 5.5vw, 5rem); }
+#experiences .lede      { font-size: clamp(1.05rem, 1.3vw, 1.2rem); }
 
 /* ---------- EXPERIENCE / PACKAGES ---------- */
 .pkg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 1px; background: rgba(36,64,58,0.16); border: 1px solid rgba(36,64,58,0.16); }
@@ -373,6 +516,52 @@ em.accent.on-dark { color: var(--gold-light); }
 .coverage-card .tag { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
 .coverage-card .tag.muted { color: rgba(36,64,58,0.72); }
 .coverage-card p { font-family: var(--font-display); font-size: clamp(1.1rem, 1.7vw, 1.4rem); line-height: 1.4; max-width: 52ch; margin: 0; }
+
+/* Coverage section — olive green background, tighter vertical spacing */
+#coverage {
+  background: #5d642f;
+  color: var(--cream-text);
+  padding-top: clamp(1.75rem, 3.5vw, 3.25rem);
+  padding-bottom: clamp(1.75rem, 3.5vw, 3.25rem);
+}
+#coverage .section-head {
+  margin-bottom: clamp(1.25rem, 2vw, 1.875rem);
+}
+#coverage .kicker { color: var(--gold-light); font-size: clamp(2.45rem, 4.5vw, 3.35rem); }
+#coverage h2.display { color: var(--cream-text); font-size: clamp(2.75rem, 5.5vw, 5rem); }
+#coverage .coverage-grid {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.14);
+}
+#coverage .coverage-card {
+  background: transparent;
+}
+#coverage .coverage-card .tag { color: var(--gold-light); }
+#coverage .coverage-card .tag.muted { color: rgba(242,237,227,0.55); }
+#coverage .coverage-card p { color: var(--cream-text); }
+
+/* ---------- GLIDE STACK 3: Coverage pins, Straight Answers rises over ---------- */
+@media (min-width: 900px) {
+  .glide-stack-3 { position: relative; }
+  #coverage {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #faq {
+    position: relative;
+    z-index: 5;
+    background: var(--cream);
+  }
+}
+
+/* ---------- STRAIGHT ANSWERS section headings ---------- */
+#faq .kicker    { font-size: clamp(2.45rem, 4.5vw, 3.35rem); }
+#faq h2.display { font-size: clamp(2.75rem, 5.5vw, 5rem); }
 
 /* ---------- FAQ ACCORDION ---------- */
 .faq-group { max-width: 62.5rem; margin: 0 auto clamp(3.5rem, 6vw, 5.5rem); }
@@ -455,12 +644,12 @@ em.accent.on-dark { color: var(--gold-light); }
 }
 
 /* ---------- FOOTER ---------- */
-.site-footer { background: var(--deep); color: rgba(242,237,227,0.68); padding: 0 clamp(1.25rem, 5vw, 4.5rem) clamp(2.5rem, 5vw, 4rem); }
+.site-footer { background: var(--deep); color: rgba(242,237,227,0.68); padding: 0 clamp(1.25rem, 5vw, 4.5rem) clamp(1.25rem, 2.5vw, 2rem); }
 .footer-inner {
   max-width: 90rem;
   margin: 0 auto;
   border-top: 1px solid rgba(242,237,227,0.14);
-  padding-top: clamp(1.75rem, 3vw, 2.5rem);
+  padding-top: clamp(1rem, 1.8vw, 1.5rem);
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem 3rem;
