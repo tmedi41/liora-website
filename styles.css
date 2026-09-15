@@ -171,7 +171,7 @@ em.accent.on-dark { color: var(--gold-light); }
   font-size: clamp(0.94rem, 1.1vw, 1.125rem);
   line-height: 1.6;
   font-weight: 300;
-  color: rgba(36,64,58,0.74);
+  color: #111;
   margin: 0 auto;
   max-width: 44ch;
   text-wrap: pretty;
@@ -182,6 +182,26 @@ em.accent.on-dark { color: var(--gold-light); }
 /* ---------- PAGE HERO (interior pages) ---------- */
 .page-hero { text-align: center; padding: clamp(4rem, 8vw, 7.5rem) clamp(1.25rem, 5vw, 4.5rem); background: var(--deep); color: var(--cream-text); }
 .page-hero-inner { max-width: 56rem; margin: 0 auto; }
+
+/* ---------- ENHANCEMENTS PAGE ---------- */
+.enhancements-hero {
+  padding-top: clamp(2rem, 4vw, 3rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+/* "Enhancements" label — cursive script matching em.accent "yours." */
+.enhancements-hero .kicker {
+  font-family: var(--font-cursive);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+  margin-bottom: 0.75rem;
+}
+#backdrops .kicker, #glam .kicker, #templates .kicker {
+  font-size: clamp(2.1rem, 3.9vw, 2.9rem);
+}
+#backdrops .lede { color: #111; }
+#glam h2.display { color: var(--green); }
 
 /* ---------- SECTIONS ---------- */
 .section { padding: clamp(3.5rem, 7vw, 6.5rem) clamp(1.25rem, 5vw, 4.5rem); }
@@ -381,7 +401,7 @@ em.accent.on-dark { color: var(--gold-light); }
 .step-num { font-family: var(--font-display); font-size: clamp(3.5rem, 5.4vw, 5.25rem); line-height: 0.8; color: rgba(36,64,58,0.28); }
 .step-tag { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
 .step h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 2.1vw, 2rem); line-height: 1.1; margin: 0; }
-.step p { font-size: 0.94rem; line-height: 1.62; font-weight: 300; color: rgba(36,64,58,0.74); margin: 0; max-width: 32ch; }
+.step p { font-size: 0.94rem; line-height: 1.62; font-weight: 300; color: #111; margin: 0; max-width: 32ch; }
 
 /* How to Book — cream background, green/gold text, enlarged */
 #how-to-book {
@@ -474,7 +494,7 @@ em.accent.on-dark { color: var(--gold-light); }
   font-size: clamp(1.88rem, 2.6vw, 2.5rem);
 }
 #how-to-book .step p {
-  color: rgba(36, 64, 58, 0.74);
+  color: #111;
   font-size: clamp(1.05rem, 1.2vw, 1.18rem);
 }
 #how-to-book .btn-primary {
@@ -502,7 +522,7 @@ em.accent.on-dark { color: var(--gold-light); }
 .pkg-card.featured .pkg-tag { color: var(--gold-light); }
 .pkg-badge { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,227,0.68); }
 .pkg-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 2.1rem); line-height: 1; margin: 0 0 1.5rem; }
-.pkg-list { display: flex; flex-direction: column; gap: 0.7rem; font-size: 0.875rem; font-weight: 300; color: rgba(36,64,58,0.78); margin-bottom: 2rem; }
+.pkg-list { display: flex; flex-direction: column; gap: 0.7rem; font-size: 0.875rem; font-weight: 300; color: #111; margin-bottom: 2rem; }
 .pkg-card.featured .pkg-list { color: rgba(242,237,227,0.82); }
 .pkg-card .btn-primary { display: block; width: 100%; margin-top: auto; }
 /* The Signature card's background is var(--green), same as .btn-primary's
@@ -583,8 +603,168 @@ em.accent.on-dark { color: var(--gold-light); }
 }
 .faq-plus { flex: none; font-family: var(--font-body); font-size: 1.375rem; font-weight: 300; color: var(--gold); transition: transform 0.25s ease; }
 .faq-item[open] .faq-plus { transform: rotate(45deg); }
-.faq-answer { display: flex; flex-direction: column; gap: 0.875rem; margin: 0 0 1.75rem; max-width: 66ch; font-size: 0.94rem; line-height: 1.68; font-weight: 300; color: rgba(36,64,58,0.78); }
+.faq-answer { display: flex; flex-direction: column; gap: 0.875rem; margin: 0 0 1.75rem; max-width: 66ch; font-size: 0.94rem; line-height: 1.68; font-weight: 300; color: #111; }
 .faq-answer p { margin: 0; }
+
+/* ---------- BACKDROP SHOWCASE CAROUSEL ---------- */
+.bd-showcase {
+  width: 100%;
+  overflow: hidden;
+  background: #f4f1ec;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(2rem, 4vw, 3rem);
+}
+/* Track height reserves space for the full-size center slide (58vw × 10/16) */
+.bd-track {
+  position: relative;
+  width: 100%;
+  height: calc(58vw * 10 / 16);
+}
+/* All slides stacked at center; JS applies translate+scale for each position */
+.bd-slide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58vw;
+  aspect-ratio: 16 / 10;
+  transform-origin: center center;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 2px;
+  will-change: transform, opacity;
+}
+.bd-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Bottom scrim: keeps label readable on any swatch including pale ones */
+.bd-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.38) 0%, transparent 48%);
+  pointer-events: none;
+  z-index: 1;
+}
+/* Name label via data-label attribute */
+.bd-slide::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.55);
+  z-index: 2;
+}
+.bd-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
+}
+.bd-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.bd-btn:hover {
+  background: var(--gold);
+  color: var(--cream-text);
+}
+@media (max-width: 680px) {
+  .bd-track { height: calc(84vw * 10 / 16); }
+  .bd-slide { width: 84vw; }
+}
+
+/* ---------- PRINT TEMPLATES GRID ---------- */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.tmpl-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0;
+}
+/* Placeholder frame — cream card with gold border, looks like an unmounted print */
+.tmpl-visual {
+  aspect-ratio: 2 / 3;
+  position: relative;
+  background: var(--cream-card);
+  border: 1px solid rgba(138, 111, 69, 0.24);
+  border-radius: 2px;
+  overflow: hidden;
+}
+/* Photo well area (top ~64%) */
+.tmpl-visual::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  right: 8%;
+  bottom: 30%;
+  background: rgba(79, 85, 38, 0.05);
+  border-radius: 1px;
+}
+/* Data strip at bottom — faint horizontal lines suggesting names/date */
+.tmpl-visual::after {
+  content: '';
+  position: absolute;
+  bottom: 8%;
+  left: 10%;
+  right: 10%;
+  height: 15%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(138, 111, 69, 0.14) 0px,
+    rgba(138, 111, 69, 0.14) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+}
+/* Real image covers placeholder once a src is provided */
+.tmpl-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.tmpl-img[src]:not([src=""]) { display: block; }
+.tmpl-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin: 0;
+}
+@media (max-width: 680px) {
+  .template-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* ---------- CONTACT FORM ---------- */
 .form-wrap { max-width: 38rem; margin: 0 auto; }
