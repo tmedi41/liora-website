@@ -28,7 +28,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 a { color: var(--green); text-decoration: none; }
 a:hover { color: var(--gold); }
@@ -369,6 +369,40 @@ em.accent.on-dark { color: var(--gold-light); }
   /* Pair 2 — rises into view together, lower in the scroll */
   .rp-3 { top: 75vh; right: 3%; width: 26%; }
   .rp-4 { top: 92vh; left: 4%;  width: 20%; }
+  /* Desktop photos are always visible — neutralize any .fade-in initial state */
+  .reveal-photos .rp { opacity: 1; transform: none; transition: none; }
+}
+
+/* Mobile Handcrafted: text pins while zigzag photos scroll over it.
+   No explicit height on .reveal-text — natural content height only.
+   No vh/dvh/svh values because we set no heights at all.
+   This avoids the judder loop: without a forced vh height, there is no
+   height-vs-viewport feedback when the address bar shows/hides. */
+@media (max-width: 899px) {
+  /* sticky; bottom: 0 pins the text when its BOTTOM edge reaches the viewport
+     bottom — the user has scrolled the full text height through the viewport
+     first (items 1→10 in order), then the text catches at the bottom. */
+  .reveal-text {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .reveal-photos {
+    position: relative;
+    z-index: 2; /* photos render above pinned text */
+    gap: 0;
+    padding: 1.5rem 0 clamp(2.5rem, 5vw, 4rem);
+    align-items: flex-start;
+  }
+  .rp {
+    width: 52%;
+    position: relative;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.20);
+  }
+  .rp-1 { align-self: flex-start;                      z-index: 1; }
+  .rp-2 { align-self: flex-end;   margin-top: -2.5rem; z-index: 2; }
+  .rp-3 { align-self: flex-start; margin-top: -2.5rem; z-index: 3; }
+  .rp-4 { align-self: flex-end;   margin-top: -2.5rem; z-index: 4; }
 }
 
 /* ---------- EVENT TICKER (standalone band) ---------- */
@@ -849,7 +883,7 @@ em.accent.on-dark { color: var(--gold-light); }
 
 /* ---------- SCROLL ANIMATIONS ---------- */
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in.visible { opacity: 1; transform: none; }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 940px) {
