@@ -122,10 +122,10 @@
       </div>
     </div>
     <div class="reveal-photos" aria-hidden="true">
-      <img src="assets/5_Fresh_Details_Booth_Stock-scaled.jpg"  class="rp rp-1" alt="">
-      <img src="assets/39_Cinema_Icon_Booth-Stock-scaled.jpg"   class="rp rp-2" alt="">
-      <img src="assets/40_Fresh_Guests_Booth_Stock-scaled.jpg"  class="rp rp-3" alt="">
-      <img src="assets/22_Western_Rich_Icon_Booth_Stock.jpg"    class="rp rp-4" alt="">
+      <img src="assets/5_Fresh_Details_Booth_Stock-scaled.jpg"  class="rp rp-1 fade-in" alt="">
+      <img src="assets/39_Cinema_Icon_Booth-Stock-scaled.jpg"   class="rp rp-2 fade-in" alt="">
+      <img src="assets/40_Fresh_Guests_Booth_Stock-scaled.jpg"  class="rp rp-3 fade-in" alt="">
+      <img src="assets/22_Western_Rich_Icon_Booth_Stock.jpg"    class="rp rp-4 fade-in" alt="">
     </div>
   </div>
 </section>
@@ -324,20 +324,50 @@
   els.forEach(function (el) { observer.observe(el); });
 })();
 </script>
+<script>
+(function () {
+  var debounceTimer;
+  function setRevealStickyTop() {
+    var el = document.querySelector('.reveal-text');
+    if (!el) return;
+    if (window.innerWidth >= 900) {
+      el.style.top = '';
+      return;
+    }
+    el.style.top = (window.innerHeight - el.offsetHeight) + 'px';
+  }
+  setRevealStickyTop();
+  window.addEventListener('load', setRevealStickyTop);
+  window.addEventListener('resize', function () {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(setRevealStickyTop, 150);
+  });
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   var heroCarousel = new Swiper('.hero-carousel', {
     effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
+    fadeEffect: { crossFade: true },
     autoplay: {
       delay: 2000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false
     },
     loop: true,
     speed: 800,
     allowTouchMove: true
+  });
+  // Mobile browsers (especially iOS Safari) can pause Swiper autoplay during
+  // the initial paint. Force-restart after the first frame, and again whenever
+  // the tab becomes visible after being hidden.
+  requestAnimationFrame(function () {
+    if (heroCarousel && heroCarousel.autoplay) heroCarousel.autoplay.start();
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && heroCarousel && heroCarousel.autoplay) {
+      heroCarousel.autoplay.start();
+    }
   });
 </script>
 </body>
