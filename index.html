@@ -316,8 +316,19 @@
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        var el = entry.target;
+        // Reveal photos (.rp) get a compositor hint only for the moment
+        // they're animating in, so the mobile sticky/scroll effect stays
+        // smooth without leaving will-change set permanently.
+        if (el.classList.contains('rp')) {
+          el.style.willChange = 'transform';
+          el.addEventListener('transitionend', function clear() {
+            el.style.willChange = 'auto';
+            el.removeEventListener('transitionend', clear);
+          });
+        }
+        el.classList.add('visible');
+        observer.unobserve(el);
       }
     });
   }, { threshold: 0.1 });
