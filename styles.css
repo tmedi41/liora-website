@@ -294,6 +294,12 @@ em.accent.on-dark { color: var(--gold-light); }
 }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
 .hero-trust { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.8rem; letter-spacing: 0.03em; color: rgba(242,237,227,0.62); }
+/* Mobile: .site-header sits above .hero (not overlaid on it), so a full
+   100svh hero pushes the bottom-anchored hero-trust row below the first
+   screen. Subtract the header's height so it lands on-screen at load. */
+@media (max-width: 899px) {
+  .hero { height: calc(100svh - 4.3rem); }
+}
 /* ---------- REVEAL SCROLL (Handcrafted section) ---------- */
 .reveal {
   background: var(--cream);
@@ -723,8 +729,11 @@ em.accent.on-dark { color: var(--gold-light); }
   color: var(--cream-text);
 }
 @media (max-width: 680px) {
-  .bd-track { height: calc(84vw * 10 / 16); }
-  .bd-slide { width: 84vw; }
+  /* 84vw left no room for neighbor slides to peek in at the sides — the
+     center-pop effect was invisible on phones (neighbors landed fully
+     off-screen). 70vw restores a visible peek, matching the desktop ratio. */
+  .bd-track { height: calc(70vw * 10 / 16); }
+  .bd-slide { width: 70vw; }
 }
 
 /* ---------- PRINT TEMPLATES GRID ---------- */
