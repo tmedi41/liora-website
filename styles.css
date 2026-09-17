@@ -249,6 +249,12 @@ em.accent.on-dark { color: var(--gold-light); }
   object-fit: cover;
   object-position: center;
   display: block;
+  /* Belt-and-suspenders alongside draggable="false": stops the browser's
+     native image-drag-ghost from ever engaging over the hero carousel. */
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .hero-overlay {
   position: absolute;

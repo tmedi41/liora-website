@@ -65,16 +65,16 @@
   <div class="swiper hero-carousel">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="assets/14_Lumiere_Icon_Booth-Stock-scaled.jpg" alt="Lumiere photo booth setup">
+        <img src="assets/14_Lumiere_Icon_Booth-Stock-scaled.jpg" alt="Lumiere photo booth setup" draggable="false">
       </div>
       <div class="swiper-slide">
-        <img src="assets/35_Courtside_Icon_Booth-Stock.jpg" alt="Courtside photo booth setup">
+        <img src="assets/35_Courtside_Icon_Booth-Stock.jpg" alt="Courtside photo booth setup" draggable="false">
       </div>
       <div class="swiper-slide">
-        <img src="assets/9_TOAST_Booth_Stock-scaled.jpg" alt="TOAST photo booth setup">
+        <img src="assets/9_TOAST_Booth_Stock-scaled.jpg" alt="TOAST photo booth setup" draggable="false">
       </div>
       <div class="swiper-slide">
-        <img src="assets/69_Lumiere_Details_Booth-Stock-scaled.jpg" alt="Lumiere photo booth detail">
+        <img src="assets/69_Lumiere_Details_Booth-Stock-scaled.jpg" alt="Lumiere photo booth detail" draggable="false">
       </div>
     </div>
   </div>
@@ -363,11 +363,23 @@
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
-      pauseOnMouseEnter: false
+      pauseOnMouseEnter: false,
+      stopOnLastSlide: false
     },
     loop: true,
     speed: 800,
-    allowTouchMove: true
+    // Purely a decorative, ambient background carousel — no arrows/dots
+    // invite manual swiping. allowTouchMove:true let a real mouse-drag or
+    // finger-swipe over the <img> hijack Swiper's gesture state (especially
+    // when the browser's native image-drag-ghost intercepts the mouseup),
+    // which could leave autoplay stuck after the first transition. Disabling
+    // it removes that whole class of interaction bugs on both platforms.
+    allowTouchMove: false,
+    // In-app browsers (Instagram/Facebook) can init Swiper before the hero's
+    // layout has settled, leaving it with a 0-size container that never
+    // recalculates. Watch the DOM/size and recalc automatically.
+    observer: true,
+    observeParents: true
   });
   // Mobile browsers (especially iOS Safari) can pause Swiper autoplay during
   // the initial paint. Force-restart after the first frame, and again whenever
@@ -378,6 +390,16 @@
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden && heroCarousel && heroCarousel.autoplay) {
       heroCarousel.autoplay.start();
+    }
+  });
+  // In-app browsers (Instagram, Facebook) often finish their own layout /
+  // chrome injection after DOMContentLoaded, which can leave autoplay stuck
+  // on the first slide. Re-sync sizing and restart once everything, images
+  // included, has fully loaded.
+  window.addEventListener('load', function () {
+    if (heroCarousel) {
+      heroCarousel.update();
+      if (heroCarousel.autoplay) heroCarousel.autoplay.start();
     }
   });
 </script>
