@@ -197,7 +197,7 @@ em.accent.on-dark { color: var(--gold-light); }
   letter-spacing: 0;
   margin-bottom: 0.75rem;
 }
-#backdrops .kicker, #glam .kicker, #templates .kicker {
+#backdrops .kicker, #glam .kicker, #branded .kicker {
   font-size: clamp(2.1rem, 3.9vw, 2.9rem);
 }
 #backdrops .lede { color: #111; }
@@ -691,7 +691,7 @@ em.accent.on-dark { color: var(--gold-light); }
 .bd-showcase {
   width: 100%;
   overflow: hidden;
-  background: #f4f1ec;
+  background: var(--cream);
   padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(2rem, 4vw, 3rem);
 }
 /* Track height reserves space for the full-size center slide (58vw × 10/16) */
@@ -777,77 +777,27 @@ em.accent.on-dark { color: var(--gold-light); }
   .bd-slide { width: 70vw; }
 }
 
-/* ---------- PRINT TEMPLATES GRID ---------- */
-.template-grid {
+/* ---------- BRANDED MOMENTS STRIP ---------- */
+.branded-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 2vw, 1.75rem);
-  max-width: 72rem;
-  margin: 0 auto;
-}
-.tmpl-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
+  gap: 0;
+  width: 100%;
   margin: 0;
 }
-/* Placeholder frame — cream card with gold border, looks like an unmounted print */
-.tmpl-visual {
-  aspect-ratio: 2 / 3;
-  position: relative;
-  background: var(--cream-card);
-  border: 1px solid rgba(138, 111, 69, 0.24);
-  border-radius: 2px;
+.branded-card {
+  margin: 0;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
 }
-/* Photo well area (top ~64%) */
-.tmpl-visual::before {
-  content: '';
-  position: absolute;
-  top: 8%;
-  left: 8%;
-  right: 8%;
-  bottom: 30%;
-  background: rgba(79, 85, 38, 0.05);
-  border-radius: 1px;
-}
-/* Data strip at bottom — faint horizontal lines suggesting names/date */
-.tmpl-visual::after {
-  content: '';
-  position: absolute;
-  bottom: 8%;
-  left: 10%;
-  right: 10%;
-  height: 15%;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(138, 111, 69, 0.14) 0px,
-    rgba(138, 111, 69, 0.14) 1px,
-    transparent 1px,
-    transparent 7px
-  );
-}
-/* Real image covers placeholder once a src is provided */
-.tmpl-img {
-  position: absolute;
-  inset: 0;
+.branded-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
-}
-.tmpl-img[src]:not([src=""]) { display: block; }
-.tmpl-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--gold);
-  text-align: center;
-  margin: 0;
+  display: block;
 }
 @media (max-width: 680px) {
-  .template-grid { grid-template-columns: repeat(2, 1fr); }
+  .branded-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ---------- CONTACT FORM ---------- */
