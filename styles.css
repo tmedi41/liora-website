@@ -582,9 +582,8 @@ em.accent.on-dark { color: var(--gold-light); }
 .pkg-tag-row { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
 .pkg-tag { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
 .pkg-card.featured .pkg-tag { color: var(--gold-light); }
-.pkg-badge { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,227,0.68); }
 .pkg-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 2.1rem); line-height: 1; margin: 0 0 1.5rem; }
-.pkg-list { display: flex; flex-direction: column; gap: 0.7rem; font-size: 0.875rem; font-weight: 300; color: #111; margin-bottom: 2rem; }
+.pkg-list { display: flex; flex-direction: column; gap: 0.7rem; font-family: var(--font-display); font-size: 1.125rem; font-weight: 500; line-height: 1.35; color: #111; margin-bottom: 2rem; }
 .pkg-card.featured .pkg-list { color: rgba(242,237,227,0.82); }
 .pkg-card .btn-primary { display: block; width: 100%; margin-top: auto; }
 /* The Signature card's background is var(--green), same as .btn-primary's
@@ -806,29 +805,29 @@ em.accent.on-dark { color: var(--gold-light); }
 .field label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--green);
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
 }
 .field input, .field select, .field textarea {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(36,64,58,0.3);
+  border-bottom: 1px solid rgba(26,26,26,0.45);
   padding: 0.6rem 0.1rem;
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 300;
-  color: var(--green);
+  font-weight: 400;
+  color: #1a1a1a;
 }
 .field textarea { resize: vertical; min-height: 6rem; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); }
-.field input::placeholder, .field textarea::placeholder { color: rgba(36,64,58,0.4); opacity: 1; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(26,26,26,0.5); opacity: 1; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
-.form-note { font-size: 0.85rem; font-weight: 300; color: rgba(36,64,58,0.62); margin-top: -0.4rem; margin-bottom: 1.75rem; }
+.form-note { font-size: 0.85rem; font-weight: 400; color: #2a2a2a; margin-top: -0.4rem; margin-bottom: 1.75rem; }
 .form-submit { border: none; cursor: pointer; }
 
 /* ---------- CONTACT INFO STRIP ---------- */
