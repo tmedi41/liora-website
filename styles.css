@@ -576,20 +576,44 @@ em.accent.on-dark { color: var(--gold-light); }
 #experiences .lede      { font-size: clamp(1.05rem, 1.3vw, 1.2rem); }
 
 /* ---------- EXPERIENCE / PACKAGES ---------- */
-.pkg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 1px; background: rgba(36,64,58,0.16); border: 1px solid rgba(36,64,58,0.16); }
-.pkg-card { background: var(--cream); padding: clamp(1.75rem, 2.8vw, 2.75rem); display: flex; flex-direction: column; position: relative; }
-.pkg-card.featured { background: var(--green); color: var(--cream-text); }
-.pkg-tag-row { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
-.pkg-tag { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+.pkg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); align-items: stretch; max-width: 72rem; margin: 0 auto; }
+.pkg-card { background: var(--cream); border: 1px solid rgba(36,64,58,0.16); padding: clamp(1.75rem, 2.8vw, 2.75rem); display: flex; flex-direction: column; position: relative; }
+/* The Grand is lifted on desktop — see the min-width: 900px block near the end. */
+.pkg-card.featured { background: #636b2f; border-color: #636b2f; color: var(--cream-text); }
+.pkg-tag { font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
 .pkg-card.featured .pkg-tag { color: var(--gold-light); }
-.pkg-card h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 2.1rem); line-height: 1; margin: 0 0 1.5rem; }
-.pkg-list { display: flex; flex-direction: column; gap: 0.7rem; font-family: var(--font-display); font-size: 1.125rem; font-weight: 500; line-height: 1.35; color: #111; margin-bottom: 2rem; }
-.pkg-card.featured .pkg-list { color: rgba(242,237,227,0.82); }
+.pkg-card h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.1rem, 3vw, 2.6rem); line-height: 1; color: var(--charcoal); margin: 0; }
+.pkg-card.featured h3 { color: var(--cream-text); }
+.pkg-hours { font-size: 0.94rem; font-weight: 300; color: var(--charcoal); margin: 0.6rem 0 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(36,64,58,0.16); }
+.pkg-card.featured .pkg-hours { color: var(--cream-text); border-bottom-color: rgba(242,237,227,0.24); }
+.pkg-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; font-family: var(--font-display); font-size: 1.125rem; font-weight: 500; line-height: 1.35; color: #111; margin: 0 0 2rem; }
+.pkg-list li { position: relative; padding-left: 1.1rem; }
+.pkg-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.35rem; height: 0.35rem; border-radius: 50%; background: var(--gold); }
+.pkg-list li.pkg-plus { padding-left: 0; font-style: italic; }
+.pkg-list li.pkg-plus::before { display: none; }
+.pkg-card.featured .pkg-list { color: rgba(242,237,227,0.86); }
+.pkg-card.featured .pkg-list li::before { background: var(--gold-light); }
+/* "See pricing" toggle — the price row is collapsed until clicked. */
+.pkg-toggle { align-self: flex-start; background: none; border: 0; padding: 0; margin: -0.75rem 0 0; font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.06em; color: rgba(79,85,38,0.7); border-bottom: 1px solid rgba(79,85,38,0.3); cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+.pkg-toggle:hover { color: var(--gold); border-bottom-color: var(--gold); }
+.pkg-card.featured .pkg-toggle { color: rgba(242,237,227,0.65); border-bottom-color: rgba(242,237,227,0.3); }
+.pkg-card.featured .pkg-toggle:hover { color: var(--gold-light); border-bottom-color: var(--gold-light); }
+.pkg-pricing { display: grid; grid-template-rows: 0fr; opacity: 0; margin-bottom: 2rem; transition: grid-template-rows 0.4s ease, opacity 0.4s ease; }
+.pkg-pricing > div { overflow: hidden; }
+.pkg-pricing.is-open { grid-template-rows: 1fr; opacity: 1; }
+.pkg-pricing p { margin: 1rem 0 0; font-size: 0.94rem; font-weight: 300; color: var(--charcoal); }
+.pkg-pricing strong { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; color: var(--charcoal); }
+.pkg-card.featured .pkg-pricing p, .pkg-card.featured .pkg-pricing strong { color: var(--cream-text); }
 .pkg-card .btn-primary { display: block; width: 100%; margin-top: auto; }
-/* The Signature card's background is var(--green), same as .btn-primary's
-   default fill — invert to cream so the button stays visible against it. */
-.pkg-card.featured .btn-primary { background: var(--cream-text); color: var(--deep); border-color: var(--cream-text); }
+/* Inquire: white, outlined. */
+.pkg-card .btn-primary.pkg-btn-outline { background: #fff; color: var(--green); border-color: var(--green); }
+.pkg-card .btn-primary.pkg-btn-outline:hover { background: var(--green); color: var(--cream-text); border-color: var(--green); }
+/* Book Now: deeper olive fill with gold text, so it reads against the #636b2f card. */
+.pkg-card.featured .btn-primary { background: var(--deep); color: var(--gold-light); border-color: var(--gold-light); }
 .pkg-card.featured .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--deep); }
+@media (max-width: 899px) {
+  .pkg-grid { grid-template-columns: 1fr; max-width: 30rem; }
+}
 
 /* ---------- COVERAGE ---------- */
 .coverage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1px; background: rgba(36,64,58,0.16); border: 1px solid rgba(36,64,58,0.16); max-width: 68rem; margin: 0 auto; }
@@ -925,7 +949,7 @@ em.accent.on-dark { color: var(--gold-light); }
   .field-row { grid-template-columns: 1fr; gap: 0; }
   .coverage-grid { grid-template-columns: 1fr; }
 }
-@media (min-width: 701px) {
+@media (min-width: 900px) {
   .pkg-card.featured { transform: translateY(-0.9rem); box-shadow: 0 1.75rem 3.25rem rgba(36,64,58,0.22); z-index: 1; }
   .pkg-card.featured.fade-in.visible { transform: translateY(-0.9rem); }
 }

@@ -187,38 +187,56 @@
 <section class="section card-bg" id="experiences">
   <div class="section-head">
     <p class="kicker">Experiences</p>
-    <h2 class="display">Two ways to Liora</h2>
+    <h2 class="display">Three ways to Liora</h2>
     <p class="lede">One all-inclusive proposal. Never an à la carte maze.</p>
   </div>
   <div class="pkg-grid">
     <div class="pkg-card fade-in">
       <span class="pkg-tag">Digital only</span>
       <h3>The Signature</h3>
-      <div class="pkg-list">
-        <span>2 hours of service</span>
-        <span>Instant Digital Sharing</span>
-        <span>All booth features above</span>
-        <span>Backdrop choice (solid colors)</span>
-        <span>Filter effects, GIFs, Boomerangs</span>
-        <span>Starting at $750</span>
+      <p class="pkg-hours">3 hours</p>
+      <ul class="pkg-list">
+        <li>Unlimited digital photos</li>
+        <li>Instant live gallery + social sharing</li>
+        <li>Energetic booth attendant</li>
+        <li>Choice of backdrop</li>
+      </ul>
+      <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="price-signature">See pricing</button>
+      <div class="pkg-pricing" id="price-signature">
+        <div><p>Starting at <strong>$650</strong></p></div>
       </div>
-      <a class="btn-primary" href="contact.html">Inquire</a>
+      <a class="btn-primary pkg-btn-outline" href="contact.html?intent=inquire">Inquire</a>
     </div>
     <div class="pkg-card featured fade-in">
-      <div class="pkg-tag-row">
-        <span class="pkg-tag">Full service</span>
-      </div>
+      <span class="pkg-tag">Full service</span>
       <h3>The Grand</h3>
-      <div class="pkg-list">
-        <span>4 hours of service</span>
-        <span>Unlimited Prints (2×6 &amp; 4×6) + Instant Digital Sharing</span>
-        <span>All booth features above</span>
-        <span>Backdrop choice (solid colors)</span>
-        <span>Signage Kiosk</span>
-        <span>Social sharing</span>
-        <span>Starting at $950</span>
+      <p class="pkg-hours">3 hours</p>
+      <ul class="pkg-list">
+        <li class="pkg-plus">Everything in Signature, plus:</li>
+        <li>Instant prints (2×6 &amp; 4×6 formats)</li>
+        <li>Guests walk away with photos</li>
+      </ul>
+      <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="price-grand">See pricing</button>
+      <div class="pkg-pricing" id="price-grand">
+        <div><p>Starting at <strong>$900</strong></p></div>
       </div>
-      <a class="btn-primary" href="contact.html">Inquire</a>
+      <a class="btn-primary" href="contact.html?intent=book">Book Now</a>
+    </div>
+    <div class="pkg-card fade-in">
+      <span class="pkg-tag">Ultra-luxury</span>
+      <h3>The Liora Elite</h3>
+      <p class="pkg-hours">4+ hours</p>
+      <ul class="pkg-list">
+        <li class="pkg-plus">Everything in Grand, plus:</li>
+        <li>Spotlight Glam filter (black &amp; white editorial look)</li>
+        <li>Audio Guestbook</li>
+        <li>Luxury keepsake album + custom branding</li>
+      </ul>
+      <button class="pkg-toggle" type="button" aria-expanded="false" aria-controls="price-elite">See pricing</button>
+      <div class="pkg-pricing" id="price-elite">
+        <div><p>Starting at <strong>$1,200</strong></p></div>
+      </div>
+      <a class="btn-primary pkg-btn-outline" href="contact.html?intent=inquire">Inquire</a>
     </div>
   </div>
   <p style="text-align:center; margin-top:2.2rem; font-size:0.94rem;">Want more? <a href="enhancements.html" style="color:var(--gold); border-bottom:1px solid rgba(138,111,69,0.4);">Browse the experiences</a></p>
@@ -303,6 +321,16 @@
   </div>
 </footer>
 
+<script>
+document.querySelectorAll(".pkg-toggle").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.textContent = open ? "Hide pricing" : "See pricing";
+    document.getElementById(btn.getAttribute("aria-controls")).classList.toggle("is-open", open);
+  });
+});
+</script>
 <script>
 (function () {
   var header = document.querySelector('.site-header');
